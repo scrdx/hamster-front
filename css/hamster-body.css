@@ -1,0 +1,236 @@
+body {
+    margin: 0px;
+}
+
+
+/** 中部容器 **/
+
+#content {
+    height: 750px;
+    padding-top: 15px;
+}
+
+#category {
+    width: 13%;
+    height: 100%;
+    float: left;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.bookmark-wrapper {
+    height: 100%;
+    width: 95%;
+}
+
+
+/** 轮播样式 **/
+
+.banner {
+    width: 84%;
+    height: 95%;
+    float: left;
+    box-shadow: 0px 1px 4px 0px #333333;
+    /* box-shadow: 3px 3px 3px rgb(220, 220, 220); */
+    margin-left: 10px;
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+.banner .tb-btn {
+    bottom: 25px;
+    height: 20px;
+}
+
+.banner .tb-btn a {
+    width: 160px;
+    height: 20px;
+    margin: 0;
+    box-sizing: border-box;
+    background: #666;
+    border-right: 1px solid #fff;
+    border-radius: 2px;
+}
+
+#bookmark_info {
+    display: none;
+}
+
+#bookmark-form {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+#bookmark-form-url {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 70%;
+}
+
+#bookmark-form-url-text {
+    width: 100%;
+    height: 35px;
+    float: left;
+    border: 2px solid rgb(135, 197, 202);
+    border-radius: 2px;
+}
+
+#bookmark-form-get {
+    width: 85px;
+    height: 35px;
+    float: left;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: rgb(135, 197, 202);
+    cursor: pointer;
+    color: #FFF;
+}
+
+#bookmark-form-get::before {
+    margin-right: 5px;
+    content: "\f021";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #F9F0DA;
+}
+
+#bookmark-form-title {
+    width: 70%;
+    height: 35px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: 2px solid rgb(135, 197, 202);
+    border-radius: 2px;
+}
+
+#bookmark-form-describe {
+    width: 70%;
+    height: 70px;
+    float: left;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: 2px solid rgb(135, 197, 202);
+    border-radius: 2px;
+}
+
+#bookmark-form-button-group {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 0px 0px 4px 4px;
+    border-top: 1px solid #eee;
+}
+
+#bookmark-form-empty,
+#bookmark-form-cancel,
+#bookmark-form-ok {
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.hamster-button {
+    width: 60px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 2px;
+    border: none;
+    background-color: rgb(135, 197, 202);
+    color: white;
+    box-shadow: 1px 1px 3px 0px rgb(86, 86, 86);
+}
+
+.hamster-button:hover {
+    box-shadow: 0px 0px 3px 0px rgb(86, 86, 86);
+}
+
+img {
+    max-width: 100%;
+}
+
+.tag-editor {
+    border: 2px solid rgb(135, 197, 202)!important;
+    margin-bottom: 16px!important;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: rgb(218, 218, 218);
+}
+
+#icon-image {
+    width: 300px;
+    height: 300px;
+}
+
+.icon-selector-container {
+    float: left;
+}
+
+.icon-selector-panel {
+    float: left;
+    margin-left: 20px;
+    width: 260px;
+    height: 305px;
+}
+
+.icon-preview {
+    overflow: hidden;
+    background-color: #000;
+    margin: 20px;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC");
+    border-radius: 13px;
+    box-shadow: 3px 3px 3px rgb(220, 220, 220);
+}
+
+.icon-preview:hover {
+    box-shadow: 3px 3px 100px rgb(83, 83, 231);
+    /* 阴影向四周扩散 */
+    box-shadow: 3px 3px 15px rgb(83, 83, 231);
+    /* 略微扩散，图标浮起 */
+    box-shadow: 1px 1px 6px rgb(83, 83, 231);
+    box-shadow: 3px 0px 10px grey;
+}
+
+.preview-sm {
+    height: 55px;
+    width: 55px;
+}
+
+.preview-md {
+    height: 100px;
+    width: 100px;
+}
+
+img {
+    max-width: 100%;
+}
+
+#bookmark-form-upload {
+    margin-top: 15px;
+}
+
+#category-tree-wrapper {
+    width: 300px;
+    float: left;
+    margin-bottom: 10px;
+}
+
+#bookmark-tag-wrapper {
+    width: 300px;
+}
+
+#category-add-panel {
+    display: none;
+}

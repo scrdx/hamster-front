@@ -1,0 +1,132 @@
+.comboTreeWrapper {
+    position: relative;
+    text-align: left !important;
+}
+
+.comboTreeInputWrapper {
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15), 0 10px 16px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-size: 14px;
+}
+
+.comboTreeArrowBtn {
+    width: 35px;
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+    top: 1px;
+    box-sizing: border-box;
+    border: none;
+    border-left: 1px solid #c7c7c7;
+    border-radius: 0 3px 3px 0;
+}
+
+.comboTreeDropDownContainer {
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15), 0 10px 16px 0 rgba(0, 0, 0, 0.2);
+    display: none;
+    background: #fff;
+    max-height: 250px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 999;
+    border-radius: 3px;
+    font-size: 14px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 5px;
+}
+
+.comboTreeDropDownContainer ul {
+    padding: 0px;
+    margin: 0;
+}
+
+.comboTreeDropDownContainer li {
+    list-style-type: none;
+    padding-left: 15px;
+    cursor: pointer;
+    /* border-bottom: solid 1px; */
+}
+
+.comboTreeDropDownContainer li:hover {
+    /* background-color: #ddd; */
+    /* background-color: #4484c7; */
+}
+
+.comboTreeDropDownContainer li:hover ul {
+    background-color: #fff;
+}
+
+.comboTreeDropDownContainer li span.comboTreeItemTitle.comboTreeItemHover {
+    background-color: #4484c7;
+    /* color: #fff; */
+}
+
+span.comboTreeItemTitle {
+    display: block;
+    padding: 5px 4px;
+}
+
+.comboTreeDropDownContainer label {
+    cursor: pointer;
+    width: 100%;
+    display: block;
+}
+
+.comboTreeDropDownContainer .comboTreeItemTitle input {
+    position: relative;
+    top: 2px;
+    margin: 0px 4px 0px 0px;
+}
+
+.comboTreeParentPlus {
+    position: relative;
+    left: -12px;
+    top: 4px;
+    width: 4px;
+    float: left;
+}
+
+.comboTreeInputBox {
+    padding: 5px;
+    border-radius: 2px;
+    border: 1px solid #999;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 24px;
+}
+
+.comboTreeArrowBtnImg {
+    font-size: 10px;
+}
+
+.multiplesFilter {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #999;
+}
+
+
+/**/
+
+.ComboTreeItemParent ul {
+    border-left: dotted 1px #999;
+}
+
+.ComboTreeItemChlid :before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: '\f111';
+    position: relative;
+    left: -16px;
+    top: 4px;
+    width: 3px;
+    float: left;
+}

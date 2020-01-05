@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--自定义样式-->
+    <link href="./css/hamster-header.css" rel="stylesheet">
+    <link href="./css/hamster-body.css" rel="stylesheet">
+    <link href="./css/hamster-footer.css" rel="stylesheet">
+    <link href="./css/hamster-icon.css" rel="stylesheet">
+    <!--组件样式-->
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/plugins/jBox.all.min.css" rel="stylesheet">
+    <link href="./css/plugins/jquery-accordion-menu-multilevel.css" rel="stylesheet">
+    <link href="./css/plugins/jquery.tag-editor.css" rel="stylesheet">
+    <link href="./css/plugins/cropper.min.css" rel="stylesheet">
+    <link href="./css/plugins/combo-tree.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- header -->
+    <div id="header">
+        <div id="menu_first">
+        </div>
+        <div class="menu_padding"></div>
+        <div id="menu_second">
+            <div class="menu_button">
+                <a id="add_bookmark" href="#" onclick="initCropper()">添加</a>
+            </div>
+            <div class="menu_button">
+                <a href="#">标签</a>
+            </div>
+            <div class="user_box"> </div>
+            <div class="search_box">
+                <input class="search_text" type="text" placeholder="标题/标签" />
+                <button class="search_button"></button>
+            </div>
+            <div id="user_panel">
+                <ul>
+                    <li><a href="#">信息</a></li>
+                    <li><a href="#">设置</a></li>
+                    <li><a href="#">退出</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!-- header end-->
+
+    <!-- body start -->
+    <div id="content">
+        <!-- category start -->
+        <div id="category">
+            <nav id="menu_nav">
+                <div id="menu" class="menu white">
+                    <div class="menu-header"> ACCORDION MENU </div>
+                    <ul>
+                        <li class="active"><a href="#"><i class="fa fa-home"> </i>Home</a></li>
+                        <li><a href="#"><i class="fa fa-file-image-o"> </i>Gallery</a>
+                            <ul class="submenu">
+                                <li><a href="#"> Graphics</a></li>
+                                <li><a href="#"> Photoshop</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-cog"> </i>Services</a>
+                            <ul class="submenu">
+                                <li><a href="#"> Web Design </a>
+                                    <ul class="submenu">
+                                        <li><a href="#"> WordPress</a></li>
+                                        <li><a href="#"> Joomla</a></li>
+                                        <li><a href="#"> test</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"> Hosting</a></li>
+                                <li><a href="#"> Design </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-newspaper-o"> </i>News</a></li>
+                        <li><a href="#"><i class="fa fa-user"> </i>About</a></li>
+                        <li><a href="#"><i class="fa fa-envelope"> </i> Contact</a></li>
+                    </ul>
+                    <div class="menu-footer"> @ Hamster</div>
+                </div>
+            </nav>
+        </div>
+        <!-- category end -->
+        <!--bookmark icon panel start-->
+        <div class="banner">
+            <ul id="test">
+                <li id="li_test">
+                    <div class="bookmark-wrapper" id="tmp_wrapper">
+                        <div class="bookmark" id="bookmark_tmp">
+                            <div class="bookmark-icon"></div>
+                            <div class="bookmark-title">pixiv</div>
+                        </div>
+                        <div class="bookmark">
+                            <div class="bookmark-icon"></div>
+                            <div class="bookmark-title">pixiv</div>
+                        </div>
+                        <div class="bookmark">
+                            <div class="bookmark-icon"></div>
+                            <div class="bookmark-title">pixiv</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- bookmark icon panel end -->
+
+    </div>
+    <!-- body end-->
+
+    <!-- bookmark add window-->
+    <div id="bookmark_info">
+        <form id="bookmark-form">
+            <div id="bookmark-form-url">
+                <input type="text" name="url" id="bookmark-form-url-text" placeholder="URL">
+                <button id="bookmark-form-get">GET</button>
+            </div>
+            <label><input type="text" name="title" id="bookmark-form-title" placeholder="标题"></label><br>
+
+            <label><textarea name="describe" id="bookmark-form-describe" placeholder="描述"></textarea></label><br>
+
+            <div id="category-tree-wrapper">
+                <input type="text" id="categoryTree" placeholder="分类" />
+            </div>
+            <br>
+
+            <div id="bookmark-tag-wrapper">
+                <textarea id="bookmark-tag"></textarea>
+            </div>
+
+
+            <hr class="line">
+            <div class="icon-selector-container">
+                <img id="icon-image" src="./img/profile.jpg">
+            </div>
+            <div class="icon-selector-panel">
+                <div class="icon-preview preview-sm"></div>
+                <div class="icon-preview preview-md"></div>
+            </div>
+            <button type="button" class="hamster-button" id="bookmark-form-upload" onclick="test()">upload</button>
+            <div id="bookmark-form-button-group">
+                <button type="button" class="hamster-button" id="bookmark-form-ok">确定</button>
+                <button type="button" class="hamster-button" id="bookmark-form-cancel">取消</button>
+                <button type="button" class="hamster-button" id="bookmark-form-empty">清空</button>
+            </div>
+        </form>
+    </div>
+    <!-- bookmark add window end-->
+
+    <!-- 添加分类弹窗 -->
+    <div id="category-add-panel">
+        <input type="text" id="category-add-text" placeholder="请输入分类名称">
+    </div>
+
+    <!-- footer start-->
+    <div id="footer"></div>
+    <!-- footer end-->
+
+    <!-- Javascript -->
+    <!--加载JQuery插件-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/plugin/jBox.all.min.js"></script>
+    <script src="./js/plugin/jquery.terseBanner.min.js"></script>
+    <script src="./js/plugin/jquery-accordion-menu-multilevel.js"></script>
+    <script src="./js/plugin/context-menu.js"></script>
+    <script src="./js/plugin/jquery.tag-editor.min.js"></script>
+    <script src="./js/plugin/cropper.min.js"></script>
+    <script src="./js/plugin/icontains.js"></script>
+    <script src="./js/plugin/comboTreePlugin.js"></script>
+
+    <!--JS-->
+    <script src="./js/util.js"></script>
+    <script src="./js/init-context-menu.js"></script>
+    <script src="./js/hamster.js"></script>
+    
+    <script>
+        function init() {
+            //测试使用，生成图标
+            var list = document.getElementById("test");
+            var li = document.getElementById('li_test');
+
+            var bookmark = document.getElementById('bookmark_tmp');
+            var tmp_wrapper = document.getElementById('tmp_wrapper');
+            for (let j = 0; j < 50; j++) {
+                var bookmarkCopy = bookmark.cloneNode(true);
+                tmp_wrapper.appendChild(bookmarkCopy);
+            }
+            for (let i = 0; i < 5; i++) {
+                var element = li.cloneNode(true);
+                list.appendChild(element);
+            }
+
+            $('.banner').terseBanner({
+                 auto: 0,
+                 animation: 'slide',
+                 speed: 600
+            });
+            $("#menu").accordion();
+            initContextMenu();
+            initUserBoxMenu();
+            initBookmarkAddPanel();
+            initTagEditor();
+            initCategorySelector();
+            initKeyEvent();
+        }
+        init();
+    </script>
+
+</body>
+
+</html>
