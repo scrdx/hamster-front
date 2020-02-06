@@ -4,29 +4,28 @@
     height: 100px;
 }
 
-#menu_first {
+#menu-first {
     height: 20%;
-    background-color: #FFFFFF;
     box-shadow: 3px 3px 3px rgb(220, 220, 220);
+    background-color: #FFFFFF;   
 }
 
-.menu_padding {
+.menu-padding {
     height: 14%;
 }
 
-#menu_second {
+#menu-second {
     height: 60%;
-    background-color: #FFFFFF;
-    /* box-shadow: 3px 3px 3px rgb(220, 220, 220); */
-    box-shadow: 0px 1px 4px 0px rgb(200, 200, 200);
     padding-left: 15%;
     padding-right: 10px;
+    box-shadow: 0px 1px 4px 0px rgb(200, 200, 200);
+    background-color: #FFFFFF;
 }
 
-.menu_button {
-    height: 100%;
+.menu-button {
     float: left;
     width: 120px;
+    height: 100%;
     border-right-style: solid;
     border-right-width: 1px;
     border-left-style: solid;
@@ -37,7 +36,7 @@
     line-height: 60px;
 }
 
-.menu_button a {
+.menu-button a {
     display: block;
     height: 100%;
     text-decoration: none;
@@ -47,93 +46,93 @@
     cursor: pointer;
 }
 
-.menu_button:hover {
+.menu-button:hover {
     background-color: rgb(240, 240, 240);
 }
 
-.search_box {
-    float: right;
-    margin-top: 10px;
-    margin-right: 50px;
-    height: 70%;
-    width: 300px;
+.search-box {
     position: relative;
+    float: right;
+    width: 300px;
+    height: 70%;
+    margin-top: 10px;
+    margin-right: 50px;   
 }
 
-.search_text {
-    height: 100%;
-    width: 300px;
+.search-text {
     float: left;
+    width: 300px;
+    height: 100%;
+    padding-left: 10px;
     border: 2px solid #7BA7AB;
     border-radius: 3px;
-    padding-left: 10px;
 }
 
-.search_button {
-    float: left;
-    height: 100%;
-    width: 40px;
+.search-button {
     position: absolute;
     right: 0px;
     top: 0px;
+    float: left;
+    width: 40px;
+    height: 100%;
     border: none;
-    background-color: #7BA7AB;
     border-radius: 0 5px 5px 0;
+    background-color: #7BA7AB;
     cursor: pointer;
 }
 
-.search_button::before {
+.search-button::before {
     content: "\f002";
     font-family: FontAwesome;
     font-size: 16px;
     color: #F9F0DA;
 }
 
-.user_box {
-    height: 50px;
+.user-box {
+    float: right;
     width: 50px;
+    height: 50px;
     margin-top: 5px;
-    background-image: url(../img/profile.jpg);
+    border-radius: 3px;
+    box-shadow: 0px 1px 4px 0px rgb(200, 200, 200);
+    background-image: url("../img/profile.jpg");
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
-    float: right;
-    border-radius: 3px;
-    box-shadow: 0px 1px 4px 0px rgb(200, 200, 200);
 }
 
-.user_box:hover {
+.user-box:hover {
     box-shadow: 3px 3px 3px 0px #555555;
 }
 
-#user_panel {
+#user-panel {
     display: none;
     position: absolute;
-    width: 150px;
-    background-color: #FFF;
-    box-shadow: 0px 1px 4px 0px rgb(200, 200, 200);
-    z-index: 100;
     top: 95px;
     right: 10px;
+    width: 150px;
+    box-shadow: 0px 1px 4px 0px rgb(200, 200, 200);
+    z-index: 100;
+    background-color: #FFF;
 }
 
-#user_panel ul {
-    list-style-type: none;
+#user-panel ul {
     display: block;
     padding: 5px 0px;
     margin: 0px;
+    list-style-type: none;
 }
 
-#user_panel ul li a {
+#user-panel ul li a {
+    display: block;
+    padding: 2px 5px;
     color: #444;
     text-decoration: none;
     line-height: 24px;
-    display: block;
     font-size: 13px;
-    text-indent: 2em;
-    padding: 2px 5px;
+    text-indent: 2em; 
 }
 
-#user_panel ul li a:hover {
+#user-panel ul li a:hover {
     background-color: rgb(238, 238, 238);
 }

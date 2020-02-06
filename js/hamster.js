@@ -4,17 +4,17 @@
  * 初始化用户选项
  */
 function initUserBoxMenu() {
-    $('.user_box').click(function() {
-        $('#user_panel').fadeToggle('fast');
+    $('.user-box').click(function() {
+        $('#user-panel').fadeToggle('fast');
     });
     $(document).click(function(event) {
         console.log(event);
-        var userPanel = document.getElementById('user_panel');
-        var userBox = document.getElementsByClassName('user_box');
+        var userPanel = document.getElementById('user-panel');
+        var userBox = document.getElementsByClassName('user-box');
         if (event.target == userBox[0] || isParent(event.target, userPanel)) {
             return;
         }
-        $('#user_panel').hide();
+        $('#user-panel').hide();
 
     });
 }
@@ -29,11 +29,11 @@ function initBookmarkAddPanel() {
         height: 750,
         overlay: false,
         draggable: 'title',
-        attach: '#add_bookmark',
+        attach: '#add-bookmark',
         title: '添加书签',
         repositionOnOpen: false,
         repositionOnContent: false,
-        content: $('#bookmark_info')
+        content: $('#bookmark-info')
     });
 }
 
