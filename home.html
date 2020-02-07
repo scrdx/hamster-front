@@ -2,9 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <!--自定义样式-->
-    <link href="./css/hamster-header.css" rel="stylesheet">
-    <link href="./css/hamster-body.css" rel="stylesheet">
+    <link href="./css/hamster-head.css" rel="stylesheet">
+    <link href="./css/hamster-sidebar.css" rel="stylesheet">
+    <link href="./css/hamster-main.css" rel="stylesheet">
+    <link href="./css/hamster-form.css" rel="stylesheet">
     <link href="./css/hamster-icon.css" rel="stylesheet">
     <!--组件样式-->
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -16,39 +19,38 @@
 </head>
 
 <body>
-    <!-- header -->
-    <div id="header">
-        <div id="menu-first">
+    <!-- head -->
+    <div class="head">
+        <div id="nav-first">
         </div>
-        <div class="menu-padding"></div>
-        <div id="menu-second">
-            <div class="menu-button">
+        <div class="nav-padding"></div>
+        <div id="nav-second">
+            <div class="nav-button">
                 <a id="add-bookmark" href="#" onclick="initCropper()">添加</a>
             </div>
-            <div class="menu-button">
+            <div class="nav-button">
                 <a href="#">标签</a>
             </div>
-            <div class="user-box"> </div>
-            <div class="search-box">
-                <input class="search-text" type="text" placeholder="标题/标签" />
-                <button class="search-button"></button>
-            </div>
-            <div id="user-panel">
+            <div class="avatar"> </div>
+            <div class="profile-menu">
                 <ul>
                     <li><a href="#">信息</a></li>
                     <li><a href="#">设置</a></li>
                     <li><a href="#">退出</a></li>
                 </ul>
             </div>
-
+            <div class="search-container">
+                <input class="search-input" type="text" placeholder="标题/标签" />
+                <button class="search-button"></button>
+            </div>
         </div>
     </div>
-    <!-- header end-->
+    <!-- head end-->
 
     <!-- body start -->
-    <div id="content">
-        <!-- category start -->
-        <div id="category">
+    <div class="body">
+        <!-- sidebar start -->
+        <div id="category" class="sidebar">
             <nav id="menu_nav">
                 <div id="menu" class="menu white">
                     <div class="menu-header"> ACCORDION MENU </div>
@@ -81,9 +83,9 @@
                 </div>
             </nav>
         </div>
-        <!-- category end -->
+        <!-- sidebar end -->
         <!--bookmark icon panel start-->
-        <div class="banner">
+        <div class="main">
             <ul id="test">
                 <li id="li_test">
                     <div class="bookmark-wrapper" id="tmp_wrapper">
@@ -109,52 +111,52 @@
     <!-- body end-->
 
     <!-- bookmark add window-->
-    <div id="bookmark-info">
-        <form id="bookmark-form">
-            <div id="bookmark-form-url">
+    <div class="bookmark-edit-panel">
+        <form class ="bookmark-edit-form">
+            <div class="bookmark-form-url">
                 <input type="text" name="url" id="bookmark-form-url-text" placeholder="URL">
-                <button id="bookmark-form-get">GET</button>
+                <button id="bookmark-form-url-get">GET</button>
             </div>
             <label><input type="text" name="title" id="bookmark-form-title" placeholder="标题"></label><br>
 
             <label><textarea name="describe" id="bookmark-form-describe" placeholder="描述"></textarea></label><br>
 
-            <div id="category-tree-wrapper">
-                <input type="text" id="categoryTree" placeholder="分类" />
+            <div class="bookmark-form-category-tree">
+                <input type="text" id="category-tree" placeholder="分类" />
             </div>
-            <br>
-
-            <div id="bookmark-tag-wrapper">
-                <textarea id="bookmark-tag"></textarea>
-            </div>
-
+            
+            <textarea id="bookmark-form-tag"></textarea>
 
             <hr class="line">
-            <div class="icon-selector-container">
+
+            <div class="bookmark-form-icon-wrapper">
+            <div class="bookmark-form-icon-editor">
                 <img id="icon-image" src="./img/profile.jpg">
             </div>
-            <div class="icon-selector-panel">
+            <div class="bookmark-form-icon-preview">
                 <div class="icon-preview preview-sm"></div>
                 <div class="icon-preview preview-md"></div>
             </div>
-            <button type="button" class="hamster-button" id="bookmark-form-upload" onclick="test()">upload</button>
+            </div>
             <div id="bookmark-form-button-group">
+                <button type="button" class="hamster-button" id="bookmark-form-upload">upload</button>
                 <button type="button" class="hamster-button" id="bookmark-form-ok">确定</button>
                 <button type="button" class="hamster-button" id="bookmark-form-cancel">取消</button>
                 <button type="button" class="hamster-button" id="bookmark-form-empty">清空</button>
             </div>
         </form>
     </div>
+
     <!-- bookmark add window end-->
 
     <!-- 添加分类弹窗 -->
-    <div id="category-add-panel">
+    <div class="category-add-panel">
         <input type="text" id="category-add-text" placeholder="请输入分类名称">
     </div>
 
-    <!-- footer start-->
-    <div id="footer"></div>
-    <!-- footer end-->
+    <!-- foot start-->
+    <div class="foot"></div>
+    <!-- foot end-->
 
     <!-- Javascript -->
     <!--加载JQuery插件-->
@@ -190,15 +192,15 @@
                 list.appendChild(element);
             }
 
-            $('.banner').terseBanner({
+            $('.main').terseBanner({
                  auto: 0,
                  animation: 'slide',
                  speed: 600
             });
             $("#menu").accordion();
             initContextMenu();
-            initUserBoxMenu();
-            initBookmarkAddPanel();
+            initUserProfileMenu();
+            initBookmarkEditPanel();
             initTagEditor();
             initCategorySelector();
             initKeyEvent();

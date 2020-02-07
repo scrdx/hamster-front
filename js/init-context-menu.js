@@ -25,7 +25,7 @@ function initContextMenu() {
             var icon = this;
             switch (name) {
                 case 'modify':
-                    $('#add_bookmark').click();
+                    $('#add-bookmark').click();
                     break;
                 case 'delete':
                     var confirm = new jBox('Confirm',{
@@ -55,7 +55,7 @@ function initContextMenu() {
 
     //图标面板右键菜单
     var bookmarkWrapper = util.panel({
-            elem: $('.banner'),
+            elem: $('.main'),
             targets: '.bookmark-wrapper',
             list: {
                 'add': {
@@ -68,7 +68,7 @@ function initContextMenu() {
             callback: function(name) {
                 console.log('you have chioce "', name, '" from the [ ', this, ']');
                 if (name === 'add') {
-                    $('#add_bookmark').click();
+                    $('#add-bookmark').click();
                 } else if (name === 'select') {
                     alert('批量选择');
                 }
@@ -100,7 +100,7 @@ function initContextMenu() {
                         draggable: 'title',
                         confirmButton: '确定',
                         cancelButton: '取消',
-                        content: $('#category-add-panel'),
+                        content: $('.category-add-panel'),
                         closeOnConfirm: false,
                         confirm: function() {
                             let categoryName = $('#category-add-text').val();

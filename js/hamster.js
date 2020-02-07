@@ -1,20 +1,20 @@
 'use strict';
 
 /**
- * 初始化用户选项
+ * 初始化用户菜单
  */
-function initUserBoxMenu() {
-    $('.user-box').click(function() {
-        $('#user-panel').fadeToggle('fast');
+function initUserProfileMenu() {
+    $('.avatar').click(function() {
+        $('.profile-menu').fadeToggle('fast');
     });
     $(document).click(function(event) {
         console.log(event);
-        var userPanel = document.getElementById('user-panel');
-        var userBox = document.getElementsByClassName('user-box');
+        var userPanel = document.getElementById('profile-menu');
+        var userBox = document.getElementsByClassName('avatar');
         if (event.target == userBox[0] || isParent(event.target, userPanel)) {
             return;
         }
-        $('#user-panel').hide();
+        $('.profile-menu').hide();
 
     });
 }
@@ -22,18 +22,26 @@ function initUserBoxMenu() {
 /**
  * 初始化书签添加面板
  */
-function initBookmarkAddPanel() {
+function initBookmarkEditPanel() {
+    let viewportWidth = window.innerWidth;
+    let viewportHeight = window.innerHeight;
+    let width = viewportWidth >= 1024 ? 600 : 500;
+    let height = viewportHeight >= 768 ? 500 : viewportHeight - 100;
     new jBox('Modal', {
         id: 'addBookmark',
-        width: 700,
-        height: 750,
+        width: width,
+        height: height,
+        responsiveHeight: true,
+        minHeight: 400,
+        maxHeight: 800,
         overlay: false,
+        isolateScroll: false,
         draggable: 'title',
         attach: '#add-bookmark',
-        title: '添加书签',
+        title: '编辑书签',
         repositionOnOpen: false,
         repositionOnContent: false,
-        content: $('#bookmark-info')
+        content: $('.bookmark-edit-panel')
     });
 }
 
@@ -41,7 +49,7 @@ function initBookmarkAddPanel() {
  * 初始化标签编辑框
  */
 function initTagEditor() {
-    $('#bookmark-tag').tagEditor({ initialTags: [], placeholder: '在这里添加标签' });
+    $('#bookmark-form-tag').tagEditor({ initialTags: [], placeholder: '在这里添加标签' });
 }
 
 /**
@@ -61,8 +69,8 @@ function initCropper() {
     var options = {
         aspectRatio: 1 / 1,
         preview: '.icon-preview',
-        minContainerWidth: 300,
-        minContainerHeight: 300,
+        minContainerWidth: 200,
+        minContainerHeight: 200,
         dragMode: "move",
     };
     var cropper = new Cropper(image, options);
@@ -122,7 +130,7 @@ function initCategorySelector() {
         id: 6,
         title: 'choice 7'
     }];
-    var comboTree = $('#categoryTree').comboTree({
+    var comboTree = $('#category-tree').comboTree({
         source: SampleJSONData,
         isMultiple: false
     });
@@ -133,9 +141,9 @@ function initKeyEvent(){
     let f = function(event){
         console.log('aaa');
         if (event.keyCode === 37) {
-            $('.banner').terseBanner('prev');
+            $('.main').terseBanner('prev');
         } else if (event.keyCode === 39) {
-            $('.banner').terseBanner('next');
+            $('.main').terseBanner('next');
         };
     }
     $(document).on('keydown', f);
