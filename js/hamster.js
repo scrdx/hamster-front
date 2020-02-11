@@ -136,6 +136,14 @@ function initCategorySelector() {
     });
 }
 
+/** 书签信息预览 */
+function initBookmarkPreview(){
+    let bookmarkPreview = new jBox('Tooltip',{
+        attach: '.bookmark',
+        trigger: 'mouseenter',
+        delayOpen: 500
+    });
+}
 
 function initKeyEvent(){
     let f = function(event){

@@ -8,29 +8,30 @@
 
 
 /* Bookmark icon */
-
 .bookmark-icon {
     width: 55px;
     height: 55px;
-    border-radius: 13px;
+    border-radius: 5px;
     box-shadow: 3px 3px 3px rgb(220, 220, 220);
     background-image: url("../icon/pixiv.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
+.bookmark-icon:hover {
+    /* 阴影向四周扩散 */
+    /* box-shadow: 3px 3px 100px rgb(83, 83, 231); */
+    box-shadow: 3px 0px 10px grey;
+    margin-top: -2px;
+}
+.bookmark-icon:active {
+    box-shadow: 3px 0px 10px grey;
+    margin-top: 0px;
+}
 
+/** 标题 **/
 .bookmark-title {
     text-align: center;
     font-size: 14px;
     text-shadow: -1px -1px 1px #fff, 1px 1px 1px #fff, 1px -1px 1px #fff, -1px 1px 1px #fff
-}
-
-.bookmark-icon:hover {
-    box-shadow: 3px 3px 100px rgb(83, 83, 231);
-    /* 阴影向四周扩散 */
-    box-shadow: 3px 3px 15px rgb(83, 83, 231);
-    /* 略微扩散，图标浮起 */
-    box-shadow: 1px 1px 6px rgb(83, 83, 231);
-    box-shadow: 3px 0px 10px grey;
 }

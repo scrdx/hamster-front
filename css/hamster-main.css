@@ -1,4 +1,6 @@
 * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 html,body {
@@ -7,11 +9,17 @@ html,body {
     overflow-x: hidden;
 }
 .body {
-    height: 80%;
+    height: 84%;
     padding-top: 15px;
 }
 
 /** 图标主面板 **/
+@media screen and (max-width: 767px){
+    .main {
+        width: 94%;
+        margin-left: 3%;
+    }
+}
 @media screen and (min-width:768px){
     .main {
         width: 94%;

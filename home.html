@@ -53,16 +53,15 @@
         <div id="category" class="sidebar">
             <nav id="menu_nav">
                 <div id="menu" class="menu white">
-                    <div class="menu-header"> ACCORDION MENU </div>
                     <ul>
-                        <li class="active"><a href="#"><i class="fa fa-home"> </i>Home</a></li>
-                        <li><a href="#"><i class="fa fa-file-image-o"> </i>Gallery</a>
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Gallery</a>
                             <ul class="submenu">
                                 <li><a href="#"> Graphics</a></li>
                                 <li><a href="#"> Photoshop</a></li>
                             </ul>
                         </li>
-                        <li><a href="#"><i class="fa fa-cog"> </i>Services</a>
+                        <li><a href="#">Services</a>
                             <ul class="submenu">
                                 <li><a href="#"> Web Design </a>
                                     <ul class="submenu">
@@ -75,11 +74,10 @@
                                 <li><a href="#"> Design </a></li>
                             </ul>
                         </li>
-                        <li><a href="#"><i class="fa fa-newspaper-o"> </i>News</a></li>
-                        <li><a href="#"><i class="fa fa-user"> </i>About</a></li>
-                        <li><a href="#"><i class="fa fa-envelope"> </i> Contact</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
-                    <div class="menu-footer"> @ Hamster</div>
                 </div>
             </nav>
         </div>
@@ -90,15 +88,11 @@
                 <li id="li_test">
                     <div class="bookmark-wrapper" id="tmp_wrapper">
                         <div class="bookmark" id="bookmark_tmp">
-                            <div class="bookmark-icon"></div>
+                            <a href="#"><div class="bookmark-icon"></div></a>
                             <div class="bookmark-title">pixiv</div>
                         </div>
                         <div class="bookmark">
-                            <div class="bookmark-icon"></div>
-                            <div class="bookmark-title">pixiv</div>
-                        </div>
-                        <div class="bookmark">
-                            <div class="bookmark-icon"></div>
+                            <a href="#"></a><div class="bookmark-icon"></div></a>
                             <div class="bookmark-title">pixiv</div>
                         </div>
                     </div>
@@ -204,6 +198,7 @@
             initTagEditor();
             initCategorySelector();
             initKeyEvent();
+            initBookmarkPreview();
         }
         init();
     </script>
