@@ -26,7 +26,7 @@ function initBookmarkEditPanel() {
     let viewportWidth = window.innerWidth;
     let viewportHeight = window.innerHeight;
     let width = viewportWidth >= 1024 ? 600 : 500;
-    let height = viewportHeight >= 768 ? 500 : viewportHeight - 100;
+    let height = viewportHeight >= 768 ? 400 : viewportHeight - 100;
     new jBox('Modal', {
         id: 'addBookmark',
         width: width,

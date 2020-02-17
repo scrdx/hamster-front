@@ -1,4 +1,11 @@
+* {
+    outline: none;/*去除按钮点击产生的蓝框*/
+ }
 /** 书签添加/编辑面板 **/
+.hamster-input {
+    border: 1px solid #23b7e5;
+    border-radius: 2px;
+}
 .bookmark-edit-panel {
     display: none;
     width: 100%;
@@ -19,8 +26,6 @@
     float: left;
     width: 100%;
     height: 35px;
-    border: 2px solid rgb(135, 197, 202);
-    border-radius: 2px;
 }
 #bookmark-form-url-get {
     position: absolute;
@@ -31,32 +36,35 @@
     height: 35px;
     border: none;
     border-radius: 0 5px 5px 0;
-    background-color: rgb(135, 197, 202);
+    background-color: #23b7e5;
     cursor: pointer;
-    color: #FFF;
+    color: #dcf2f8;
+}
+#bookmark-form-url-get:hover {
+    background-color: #19a9d5;
+}
+#bookmark-form-url-get:active {
+    border: none;
+    box-shadow: 1px 2px 4px 0px rgba(0,0,0,.325) inset;
 }
 #bookmark-form-url-get::before {
     margin-right: 5px;
     content: "\f021";
     font-family: FontAwesome;
     font-size: 16px;
-    color: #F9F0DA;
+    color: #dcf2f8;
 }
 
 #bookmark-form-title {
     margin-top: 8px;
     width: 90%;
     height: 35px;
-    border: 2px solid rgb(135, 197, 202);
-    border-radius: 2px;
 }
 #bookmark-form-describe {
     margin-top: 8px;
     float: left;
     width: 90%;
     height: 60px;
-    border: 2px solid rgb(135, 197, 202);
-    border-radius: 2px;
 }
 /** 书签添加面板分类下拉菜单 **/
 .bookmark-form-category-tree {
@@ -68,7 +76,7 @@
 /** 书签添加面板标签添加 **/
 .tag-editor {
     width: 85%;
-    border: 2px solid rgb(135, 197, 202)!important;
+    border: 1px solid #23b7e5!important;
 }
 
 /** 横线 **/
@@ -139,14 +147,18 @@
     width: 60px;
     height: 30px;
     margin: 5px;
-    border-radius: 2px;
     border: none;
-    box-shadow: 1px 1px 3px 0px rgb(86, 86, 86);
-    color: white;
-    background-color: rgb(135, 197, 202);
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,.325);
+    color: #dcf2f8;
+    background-color: #23b7e5;
+    /* cursor: pointer; */
 }
 .hamster-button:hover {
-    box-shadow: 0px 0px 3px 0px rgb(86, 86, 86);
+    background-color: #19a9d5;
+}
+.hamster-button:active {
+    box-shadow: 1px 2px 4px 1px rgba(0,0,0,.325) inset,1px 1px 2px 0px rgba(0,0,0,.325);
 }
 /** 图标上传按钮 **/
 #bookmark-form-upload {
@@ -165,4 +177,8 @@
 /** 分类添加面板 **/
 .category-add-panel {
     display: none;
+}
+.category-add-text {
+    width: 300px;
+    height: 30px;
 }

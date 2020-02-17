@@ -40,7 +40,7 @@
                 </ul>
             </div>
             <div class="search-container">
-                <input class="search-input" type="text" placeholder="标题/标签" />
+                <input class="search-input hamster-input" type="text" placeholder="标题/标签" />
                 <button class="search-button"></button>
             </div>
         </div>
@@ -108,12 +108,12 @@
     <div class="bookmark-edit-panel">
         <form class ="bookmark-edit-form">
             <div class="bookmark-form-url">
-                <input type="text" name="url" id="bookmark-form-url-text" placeholder="URL">
+                <input type="text" name="url" class="hamster-input" id="bookmark-form-url-text" placeholder="URL">
                 <button id="bookmark-form-url-get">GET</button>
             </div>
-            <label><input type="text" name="title" id="bookmark-form-title" placeholder="标题"></label><br>
+            <label><input type="text" name="title" class="hamster-input" id="bookmark-form-title" placeholder="标题"></label><br>
 
-            <label><textarea name="describe" id="bookmark-form-describe" placeholder="描述"></textarea></label><br>
+            <label><textarea name="describe" class="hamster-input" id="bookmark-form-describe" placeholder="描述"></textarea></label><br>
 
             <div class="bookmark-form-category-tree">
                 <input type="text" id="category-tree" placeholder="分类" />
@@ -145,7 +145,7 @@
 
     <!-- 添加分类弹窗 -->
     <div class="category-add-panel">
-        <input type="text" id="category-add-text" placeholder="请输入分类名称">
+        <input type="text" class="hamster-input category-add-text" id="category-add-text" placeholder="请输入分类名称">
     </div>
 
     <!-- foot start-->
