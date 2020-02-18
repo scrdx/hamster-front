@@ -101,7 +101,7 @@
 
         if (isThereSubs)
         // itemHtml += '<span class="comboTreeParentPlus">&minus;</span>';
-            itemHtml += '<span class="comboTreeParentPlus"><i class="fa fa-minus-square" aria-hidden="true"></i></span>';
+            itemHtml += '<span class="comboTreeParentPlus"><i class="fa fa-minus-square-o" aria-hidden="true"></i></span>';
 
         if (this.options.isMultiple)
             itemHtml += '<span data-id="' + sourceItem.id + '" class="comboTreeItemTitle"><input type="checkbox">' + sourceItem.title + '</span>';
@@ -241,17 +241,17 @@
         if (direction === undefined) {
             if ($(subMenu).is(':visible'))
             // $(item).children('span.comboTreeParentPlus').html("+");
-                $(item).children('span.comboTreeParentPlus').html("<i class=\"fa fa-plus-square\" aria-hidden=\"true\"></i>");
+                $(item).children('span.comboTreeParentPlus').html("<i class=\"fa fa-plus-square-o\" aria-hidden=\"true\"></i>");
             else
-                $(item).children('span.comboTreeParentPlus').html("<i class=\"fa fa-minus-square\" aria-hidden=\"true\"></i>");
+                $(item).children('span.comboTreeParentPlus').html("<i class=\"fa fa-minus-square-o\" aria-hidden=\"true\"></i>");
 
             $(subMenu).slideToggle(50);
         } else if (direction == 1 && !$(subMenu).is(':visible')) {
-            $(item).children('span.comboTreeParentPlus').html("<i class=\"fa fa-minus-square\" aria-hidden=\"true\"></i>");
+            $(item).children('span.comboTreeParentPlus').html("<i class=\"fa fa-minus-square-o\" aria-hidden=\"true\"></i>");
             $(subMenu).slideDown(50);
         } else if (direction == -1) {
             if ($(subMenu).is(':visible')) {
-                $(item).children('span.comboTreeParentPlus').html("<i class=\"fa fa-plus-square\" aria-hidden=\"true\"></i>");
+                $(item).children('span.comboTreeParentPlus').html("<i class=\"fa fa-plus-square-o\" aria-hidden=\"true\"></i>");
                 $(subMenu).slideUp(50);
             } else {
                 this.dropDownMenuHoverToParentItem(item);

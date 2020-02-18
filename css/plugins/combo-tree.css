@@ -4,7 +4,6 @@
 }
 
 .comboTreeInputWrapper {
-    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.15), 0 10px 16px 0 rgba(0, 0, 0, 0.2);
     position: relative;
     font-size: 14px;
 }
@@ -62,7 +61,7 @@
 }
 
 .comboTreeDropDownContainer li span.comboTreeItemTitle.comboTreeItemHover {
-    background-color: #4484c7;
+    background-color: #19a9d5;
     /* color: #fff; */
 }
 
@@ -94,7 +93,7 @@ span.comboTreeItemTitle {
 .comboTreeInputBox {
     padding: 5px;
     border-radius: 2px;
-    border: 1px solid #999;
+    border: 1px solid #23b7e5;
     width: 100%;
     box-sizing: border-box;
     padding-right: 24px;
@@ -121,12 +120,13 @@ span.comboTreeItemTitle {
     border-left: dotted 1px #999;
 }
 
-.ComboTreeItemChlid :before {
-    font: normal normal normal 14px/1 FontAwesome;
+/** 项目前面的圆圈 **/
+/* .ComboTreeItemChlid :before {
+    font: normal normal normal 12px/1 FontAwesome;
     content: '\f111';
     position: relative;
     left: -16px;
     top: 4px;
     width: 3px;
     float: left;
-}
+} */
