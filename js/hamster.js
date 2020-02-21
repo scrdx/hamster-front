@@ -141,7 +141,16 @@ function initBookmarkPreview(){
     let bookmarkPreview = new jBox('Tooltip',{
         attach: '.bookmark',
         trigger: 'mouseenter',
-        delayOpen: 500
+        delayOpen: 500,
+        position: {
+            x: 'right',
+            y: 'top'
+        },
+        outside: 'x',
+        adjustPosition: true,
+        adjustTracker: true,
+        closeOnMouseleave: true,
+        content: $('.bookmark-preview')
     });
 }
 
