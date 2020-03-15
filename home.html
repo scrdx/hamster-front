@@ -36,7 +36,7 @@
                 <ul>
                     <li><a href="#">信息</a></li>
                     <li><a href="#">设置</a></li>
-                    <li><a href="#">退出</a></li>
+                    <li><a id="logout" href="#">退出</a></li>
                 </ul>
             </div>
             <div class="search-container">
@@ -134,7 +134,7 @@
             </div>
             <div id="bookmark-form-button-group">
                 <button type="button" class="hamster-button" id="bookmark-form-upload">upload</button>
-                <button type="button" class="hamster-button" id="bookmark-form-ok">确定</button>
+                <button type="button" class="hamster-button" id="bookmark-form-ok" onclick="test()">确定</button>
                 <button type="button" class="hamster-button" id="bookmark-form-cancel">取消</button>
                 <button type="button" class="hamster-button" id="bookmark-form-empty">清空</button>
             </div>
@@ -185,6 +185,7 @@
     <!--JS-->
     <script src="./js/util.js"></script>
     <script src="./js/init-context-menu.js"></script>
+    <script src="./js/event-handler.js"></script>
     <script src="./js/hamster.js"></script>
     
     <script>
