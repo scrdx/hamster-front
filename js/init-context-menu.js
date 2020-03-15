@@ -172,4 +172,45 @@ function initContextMenu() {
             // console.log('you have panel [ ', this, ']');
         }
     });
+
+    let categoryRootContextMenu = util.panel({
+        elem: $('#category'),
+        targets: 'div',
+        list: {
+            'add': {
+                'txt': '添加'
+            }
+        },
+        callback: function(name) {
+            let category = this;
+            var categoryAddPanel = new jBox('Confirm', {
+                title: '添加分类',
+                draggable: 'title',
+                confirmButton: '确定',
+                cancelButton: '取消',
+                content: $('.category-add-panel'),
+                closeOnConfirm: false,
+                confirm: function() {
+                    let categoryName = $('#category-add-text').val();
+                    if (isEmpty(categoryName)) {
+                        alert('分类名称不能为空');
+                        return;
+                    }
+                    let ul = category.getElementsByTagName('ul');
+                    let li;
+                    if (ul.length > 0) {
+                        ul = ul[0];
+                        li = document.createElement('li');
+                        li.innerHTML = `<a href="#"> ${categoryName}</a>`;
+                        ul.appendChild(li);
+                    }
+                    $("#menu").accordion();
+                    categoryAddPanel.close();
+                }
+            }).open();
+        },
+        callbefore: function() {
+            // console.log('you have panel [ ', this, ']');
+        }
+    });
 }
