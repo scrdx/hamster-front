@@ -1,5 +1,6 @@
 'use strict';
 var cropper;
+var configCropper;
 
 /**
  * 初始化用户菜单
@@ -48,6 +49,33 @@ function initBookmarkEditPanel() {
 }
 
 /**
+ * 初始化用户配置弹窗
+ */
+function initUserConfigPanel() {
+    let viewportWidth = window.innerWidth;
+    let viewportHeight = window.innerHeight;
+    let width = viewportWidth >= 1024 ? 500 : 500;
+    let height = viewportHeight >= 768 ? 400 : viewportHeight-100;
+    new jBox('Modal', {
+        id: 'userConfig',
+        width: width,
+        height: height,
+        responsiveHeight: true,
+        minHeight: 400,
+        maxHeight: 800,
+        overlay: false,
+        isolateScroll: false,
+        draggable: 'title',
+        attach: '#config',
+        title: '用户配置',
+        repositionOnOpen: false,
+        repositionOnContent: false,
+        content: $('.user-config-panel')
+    });
+}
+
+
+/**
  * 初始化标签编辑框
  */
 function initTagEditor() {
@@ -58,6 +86,7 @@ function initTagEditor() {
  * 当preview元素所在父元素的display为null时,会导致Cropper的preview无法正确渲染,现在暂时的解决办法是在点击按钮弹窗的时候渲染
  */
 var isFirstInitCropper = true;
+var isFirstOpenConfigPanel = true;
 
 /**
  * 初始化图标上传组件
@@ -78,6 +107,23 @@ function initCropper() {
     cropper = new Cropper(image, options);
     isFirstInitCropper = false;
 }
+function initConfigCropper() {
+
+    if (!isFirstOpenConfigPanel) {
+        return;
+    }
+    var image = document.getElementById('avator-image');
+    var options = {
+        aspectRatio: 1 / 1,
+        preview: '.avator-preview',
+        minContainerWidth: 200,
+        minContainerHeight: 200,
+        dragMode: "move",
+    };
+    configCropper = new Cropper(image, options);
+    isFirstOpenConfigPanel = false;
+}
+
 
 /**
  * 初始化书签分类下拉选择框

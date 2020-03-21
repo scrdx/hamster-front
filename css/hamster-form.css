@@ -89,10 +89,10 @@
 }
 
 /** 图标编辑组件 **/
-.bookmark-form-icon-wrapper {
+.icon-wrapper {
     width: 100%;
 }
-.bookmark-form-icon-editor {
+.icon-editor {
     float: left;
 }
 #icon-image {
@@ -132,7 +132,7 @@
 }
 
 /** 书签编辑面板按钮 **/
-#bookmark-form-button-group {
+#button-group {
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -161,14 +161,14 @@
     box-shadow: 1px 2px 4px 1px rgba(0,0,0,.325) inset,1px 1px 2px 0px rgba(0,0,0,.325);
 }
 /** 图标上传按钮 **/
-#bookmark-form-upload {
+.form-upload {
     margin-top: 10px;
     margin-left: 20px;
 }
 
-#bookmark-form-empty,
-#bookmark-form-cancel,
-#bookmark-form-ok {
+.form-empty,
+.form-cancel,
+.form-ok {
     float: right;
     margin-top: 10px;
     margin-right: 20px;
@@ -245,4 +245,43 @@
 }
 .preview-tag:active {
     box-shadow: 1px 2px 4px 1px rgba(0,0,0,.325) inset,1px 1px 2px 0px rgba(0,0,0,.325);
+}
+
+/** 用户配置弹窗 **/
+.user-config-panel {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+.user-config-form-icon-preview {
+    float: left;
+    margin-left: 20px;
+    width: calc(90% - 200px);
+    height: 305px;
+}
+#avator-image{
+    width: 200px;
+    height: 200px;
+}
+.avator-preview {
+    margin: 20px;
+    overflow: hidden;
+    border-radius: 13px;
+    box-shadow: 3px 3px 3px rgb(220, 220, 220);
+    background-color: #000;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC");
+}
+.avator-preview:hover {
+    box-shadow: 3px 3px 100px rgb(83, 83, 231);
+    /* 阴影向四周扩散 */
+    box-shadow: 3px 3px 15px rgb(83, 83, 231);
+    /* 略微扩散，图标浮起 */
+    box-shadow: 1px 1px 6px rgb(83, 83, 231);
+    box-shadow: 3px 0px 10px grey;
+}
+#user-config-form-nickname {
+    height: 30px;
+    width: 300px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }

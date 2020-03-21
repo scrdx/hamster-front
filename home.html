@@ -35,7 +35,7 @@
             <div class="profile-menu">
                 <ul>
                     <li><a href="#">信息</a></li>
-                    <li><a href="#">设置</a></li>
+                    <li><a id="config" href="#" onclick="initConfigCropper()">设置</a></li>
                     <li><a id="logout" href="#">退出</a></li>
                 </ul>
             </div>
@@ -123,8 +123,8 @@
 
             <hr class="line">
 
-            <div class="bookmark-form-icon-wrapper">
-            <div class="bookmark-form-icon-editor">
+            <div class="icon-wrapper">
+            <div class="icon-editor">
                 <img id="icon-image" src="./img/profile.jpg">
             </div>
             <div class="bookmark-form-icon-preview">
@@ -132,16 +132,39 @@
                 <div class="icon-preview preview-md"></div>
             </div>
             </div>
-            <div id="bookmark-form-button-group">
-                <button type="button" class="hamster-button" id="bookmark-form-upload">upload</button>
-                <button type="button" class="hamster-button" id="bookmark-form-ok" onclick="test()">确定</button>
-                <button type="button" class="hamster-button" id="bookmark-form-cancel">取消</button>
-                <button type="button" class="hamster-button" id="bookmark-form-empty">清空</button>
+            <div id="button-group">
+                <button type="button" class="hamster-button form-upload" id="bookmark-form-upload">upload</button>
+                <button type="button" class="hamster-button form-ok" id="bookmark-form-ok" onclick="test()">确定</button>
+                <button type="button" class="hamster-button form-cancel" id="bookmark-form-cancel">取消</button>
+                <button type="button" class="hamster-button form-empty" id="bookmark-form-empty">清空</button>
             </div>
         </form>
     </div>
-
     <!-- bookmark add window end-->
+
+    <!-- 用户配置界面 -->
+    <div class="user-config-panel">
+        <form class="user-config-form">
+            <label><input type="text" name="nickname" class="hamster-input" id="user-config-form-nickname" placeholder="昵称"></label><br>
+
+            <div class="icon-wrapper">
+            <div class="icon-editor">
+                <img id="avator-image" src="./img/profile.jpg">
+            </div>
+            <div class="user-config-form-icon-preview">
+                <div class="avator-preview preview-md"></div>
+            </div>
+            </div>
+
+            <div id="button-group">
+                <button type="button" class="hamster-button form-upload" id="avator-form-upload">upload</button>
+                <button type="button" class="hamster-button form-ok" id="avator-form-ok" onclick="test()">确定</button>
+                <button type="button" class="hamster-button form-cancel" id="avator-form-cancel">取消</button>
+                <button type="button" class="hamster-button form-empty" id="avator-form-empty">清空</button>
+            </div>
+
+        </form>
+    </div>   
 
     <!-- 添加分类弹窗 -->
     <div class="category-add-panel">
@@ -214,6 +237,7 @@
             initContextMenu();
             initUserProfileMenu();
             initBookmarkEditPanel();
+            initUserConfigPanel();
             initTagEditor();
             initCategorySelector();
             initKeyEvent();
