@@ -1,4 +1,5 @@
 'use strict';
+var cropper;
 
 /**
  * 初始化用户菜单
@@ -26,7 +27,8 @@ function initBookmarkEditPanel() {
     let viewportWidth = window.innerWidth;
     let viewportHeight = window.innerHeight;
     let width = viewportWidth >= 1024 ? 600 : 500;
-    let height = viewportHeight >= 768 ? 400 : viewportHeight - 100;
+    let height = viewportHeight >= 768 ? 600 : viewportHeight-100;
+    console.log('width '+ width + ' height ' + height);
     new jBox('Modal', {
         id: 'addBookmark',
         width: width,
@@ -73,7 +75,7 @@ function initCropper() {
         minContainerHeight: 200,
         dragMode: "move",
     };
-    var cropper = new Cropper(image, options);
+    cropper = new Cropper(image, options);
     isFirstInitCropper = false;
 }
 
@@ -164,4 +166,8 @@ function initKeyEvent(){
         };
     }
     $(document).on('keydown', f);
+}
+
+function test(){
+    console.log(cropper.getData());
 }
