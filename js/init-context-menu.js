@@ -108,31 +108,43 @@ function initContextMenu() {
                                 alert('分类名称不能为空');
                                 return;
                             }
-                            let submenu = category.getElementsByClassName('submenu');
-                            let li;
-                            if (submenu.length > 0) {
-                                submenu = submenu[0];
-                                li = document.createElement('li');
+                            let id = category.getAttribute("id");
+                            addCategory(id, categoryName, (data)=>{
+                                if (data.code !== 0) {
+                                    console.log(`添加失败,code:${data.code},message:${data.message}`);
+                                    new jBox('Notice',{
+                                        content: data.message,
+                                        color: 'blue',
+                                        stack: true,
+                                        closeOnClick: true,
+                                        delayClose: 100
+                                    }).open();   
+                                }
+                                let submenu = category.getElementsByClassName('submenu');
+                                let li = document.createElement('li');
                                 li.innerHTML = `<a href="#"> ${categoryName}</a>`;
-                                submenu.appendChild(li);
-                            } else {
-                                submenu = document.createElement('ul');
-                                submenu.className = 'submenu';
-                                li = document.createElement('li');
-                                li.innerHTML = `<a href="#"> ${categoryName}</a>`;
-                                submenu.appendChild(li);
-                                category.appendChild(submenu);
-                                let title = category.getElementsByTagName('a')[0];
-                                title.innerHTML = title.innerHTML + '<span class="submenu-indicator">+</span>';
-                            }
-                            $("#menu").accordion();
-                            categoryAddPanel.close();
-                        
+                                li.setAttribute('id', data.data);
+                                if (submenu.length > 0) {
+                                    submenu = submenu[0];
+                                    submenu.appendChild(li);
+                                } else {
+                                    submenu = document.createElement('ul');
+                                    submenu.className = 'submenu';
+                                    submenu.appendChild(li);
+                                    category.appendChild(submenu);
+                                    let title = category.getElementsByTagName('a')[0];
+                                    title.innerHTML = title.innerHTML + '<span class="submenu-indicator">+</span>';
+                                }
+                                $("#menu").accordion();
+                                categoryAddPanel.close();
+                            });                       
                         }
                     }).open();
                     break;
                 case 'delete':
                     let submenu = category.getElementsByClassName('submenu');
+                    let id = category.getAttribute('id');
+                    console.log(id);
                     if (submenu.length > 0) {
                         new jBox('Notice',{
                             content: '该分类下有子分类，无法删除!',
@@ -149,16 +161,29 @@ function initContextMenu() {
                             content: '确认删除该分类?',
                             closeOnConfirm: false,
                             confirm: function(){
-                                let siblings = $(category).siblings();
-                                let parent = $(category).parent();                           
-                                $(category).remove();
-                                if (siblings.length === 0) {
-                                    let title = parent.prev();
-                                    title.removeClass();
-                                    title.find('.submenu-indicator').remove();
-                                    parent.remove();                                                                        
-                                }
-                                confirm.close();
+                                deleteCategory(id, (data)=>{
+                                    if (data.code !== 0) {
+                                        console.log(`删除分类异常:code:${data.code}:message:${data.message}`);
+                                        new jBox('Notice',{
+                                            content: data.message,
+                                            color: 'blue',
+                                            stack: true,
+                                            closeOnClick: true,
+                                            delayClose: 100
+                                        }).open();   
+                                        return;
+                                    }
+                                    let siblings = $(category).siblings();
+                                    let parent = $(category).parent();                           
+                                    $(category).remove();
+                                    if (siblings.length === 0) {
+                                        let title = parent.prev();
+                                        title.removeClass();
+                                        title.find('.submenu-indicator').remove();
+                                        parent.remove();                                                                        
+                                    }
+                                    confirm.close();
+                                });
                             }
                         }).open();                        
                     }
@@ -196,16 +221,28 @@ function initContextMenu() {
                         alert('分类名称不能为空');
                         return;
                     }
-                    let ul = category.getElementsByTagName('ul');
-                    let li;
-                    if (ul.length > 0) {
-                        ul = ul[0];
-                        li = document.createElement('li');
-                        li.innerHTML = `<a href="#"> ${categoryName}</a>`;
-                        ul.appendChild(li);
-                    }
-                    $("#menu").accordion();
-                    categoryAddPanel.close();
+                    addCategory(1, categoryName, (data)=>{
+                        if (data.code !== 0) {
+                            new jBox('Notice',{
+                                content: data.message,
+                                color: 'blue',
+                                stack: true,
+                                closeOnClick: true,
+                                delayClose: 100
+                            }).open();
+                            return;
+                        }
+                        let ul = category.getElementsByTagName('ul');
+                        let li;
+                        if (ul.length > 0) {
+                            ul = ul[0];
+                            li = document.createElement('li');
+                            li.innerHTML = `<a href="#"> ${categoryName}</a>`;
+                            ul.appendChild(li);
+                        }
+                        $("#menu").accordion();
+                        categoryAddPanel.close();
+                    });
                 }
             }).open();
         },

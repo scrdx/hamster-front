@@ -54,29 +54,7 @@
             <nav id="menu_nav">
                 <div id="menu" class="menu white">
                     <ul>
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Gallery</a>
-                            <ul class="submenu">
-                                <li><a href="#"> Graphics</a></li>
-                                <li><a href="#"> Photoshop</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Services</a>
-                            <ul class="submenu">
-                                <li><a href="#"> Web Design </a>
-                                    <ul class="submenu">
-                                        <li><a href="#"> WordPress</a></li>
-                                        <li><a href="#"> Joomla</a></li>
-                                        <li><a href="#"> test</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#"> Hosting</a></li>
-                                <li><a href="#"> Design </a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
+
                     </ul>
                 </div>
             </nav>
@@ -106,14 +84,14 @@
 
     <!-- bookmark add window-->
     <div class="bookmark-edit-panel">
-        <form class ="bookmark-edit-form">
+        <div class ="bookmark-edit-form">
             <div class="bookmark-form-url">
                 <input type="text" name="url" class="hamster-input" id="bookmark-form-url-text" placeholder="URL">
                 <button id="bookmark-form-url-get">GET</button>
             </div>
             <label><input type="text" name="title" class="hamster-input" id="bookmark-form-title" placeholder="标题"></label><br>
 
-            <label><textarea name="describe" class="hamster-input" id="bookmark-form-describe" placeholder="描述"></textarea></label><br>
+            <label><textarea name="describe" class="hamster-input" id="bookmark-form-description" placeholder="描述"></textarea></label><br>
 
             <div class="bookmark-form-category-tree">
                 <input type="text" id="category-tree" placeholder="分类" />
@@ -123,6 +101,7 @@
 
             <hr class="line">
 
+            <input type="file" id="icon-file" style="display:none" />
             <div class="icon-wrapper">
             <div class="icon-editor">
                 <img id="icon-image" src="./img/profile.jpg">
@@ -134,11 +113,11 @@
             </div>
             <div id="button-group">
                 <button type="button" class="hamster-button form-upload" id="bookmark-form-upload">upload</button>
-                <button type="button" class="hamster-button form-ok" id="bookmark-form-ok" onclick="test()">确定</button>
+                <button type="button" class="hamster-button form-ok" id="bookmark-form-ok">确定</button>
                 <button type="button" class="hamster-button form-cancel" id="bookmark-form-cancel">取消</button>
                 <button type="button" class="hamster-button form-empty" id="bookmark-form-empty">清空</button>
             </div>
-        </form>
+        </div>
     </div>
     <!-- bookmark add window end-->
 
@@ -200,6 +179,7 @@
     <script src="./js/plugin/jquery.terseBanner.min.js"></script>
     <script src="./js/plugin/jquery-accordion-menu-multilevel.js"></script>
     <script src="./js/plugin/context-menu.js"></script>
+    <script src="./js/plugin/jquery.caret.js"></script>
     <script src="./js/plugin/jquery.tag-editor.min.js"></script>
     <script src="./js/plugin/cropper.min.js"></script>
     <script src="./js/plugin/icontains.js"></script>
@@ -207,8 +187,10 @@
 
     <!--JS-->
     <script src="./js/util.js"></script>
+    <script src="./js/api.js"></script>
     <script src="./js/init-context-menu.js"></script>
     <script src="./js/event-handler.js"></script>
+    <script src="./js/modules/category.js"></script>
     <script src="./js/hamster.js"></script>
     
     <script>
@@ -242,6 +224,9 @@
             initCategorySelector();
             initKeyEvent();
             initBookmarkPreview();
+
+            //初始化数据
+            initCategoryTree();
         }
         init();
     </script>

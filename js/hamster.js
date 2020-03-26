@@ -1,16 +1,17 @@
 'use strict';
 var cropper;
 var configCropper;
+var bookmarkAddWindow;
 
 /**
  * 初始化用户菜单
  */
 function initUserProfileMenu() {
-    $('.avatar').click(function() {
+    $('.avatar').click(function () {
         $('.profile-menu').fadeToggle('fast');
     });
-    $(document).click(function(event) {
-        console.log(event);
+    $(document).click(function (event) {
+        // console.log(event);
         var userPanel = document.getElementById('profile-menu');
         var userBox = document.getElementsByClassName('avatar');
         if (event.target == userBox[0] || isParent(event.target, userPanel)) {
@@ -28,9 +29,8 @@ function initBookmarkEditPanel() {
     let viewportWidth = window.innerWidth;
     let viewportHeight = window.innerHeight;
     let width = viewportWidth >= 1024 ? 600 : 500;
-    let height = viewportHeight >= 768 ? 600 : viewportHeight-100;
-    console.log('width '+ width + ' height ' + height);
-    new jBox('Modal', {
+    let height = viewportHeight >= 768 ? 600 : viewportHeight - 100;
+    bookmarkAddWindow = new jBox('Modal', {
         id: 'addBookmark',
         width: width,
         height: height,
@@ -44,7 +44,8 @@ function initBookmarkEditPanel() {
         title: '编辑书签',
         repositionOnOpen: false,
         repositionOnContent: false,
-        content: $('.bookmark-edit-panel')
+        content: $('.bookmark-edit-panel'),
+        onOpen: initCategorySelector
     });
 }
 
@@ -55,7 +56,7 @@ function initUserConfigPanel() {
     let viewportWidth = window.innerWidth;
     let viewportHeight = window.innerHeight;
     let width = viewportWidth >= 1024 ? 500 : 500;
-    let height = viewportHeight >= 768 ? 400 : viewportHeight-100;
+    let height = viewportHeight >= 768 ? 400 : viewportHeight - 100;
     new jBox('Modal', {
         id: 'userConfig',
         width: width,
@@ -79,7 +80,12 @@ function initUserConfigPanel() {
  * 初始化标签编辑框
  */
 function initTagEditor() {
-    $('#bookmark-form-tag').tagEditor({ initialTags: [], placeholder: '在这里添加标签' });
+    $('#bookmark-form-tag').tagEditor({
+        initialTags: [],
+        placeholder: '在这里添加标签',
+        maxLength: 20,
+        maxTags: 50
+    });
 }
 
 /**
@@ -128,65 +134,44 @@ function initConfigCropper() {
 /**
  * 初始化书签分类下拉选择框
  */
+var comboTree;
 function initCategorySelector() {
-    var SampleJSONData = [{
-        id: 0,
-        title: 'choice 1  '
-    }, {
-        id: 1,
-        title: 'choice 2',
-        subs: [{
-            id: 10,
-            title: 'choice 2 1'
-        }, {
-            id: 11,
-            title: 'choice 2 2'
-        }, {
-            id: 12,
-            title: 'choice 2 3'
-        }]
-    }, {
-        id: 2,
-        title: 'choice 3'
-    }, {
-        id: 3,
-        title: 'choice 4'
-    }, {
-        id: 4,
-        title: 'choice 5'
-    }, {
-        id: 5,
-        title: 'choice 6',
-        subs: [{
-            id: 50,
-            title: 'choice 6 1'
-        }, {
-            id: 51,
-            title: 'choice 6 2',
-            subs: [{
-                id: 510,
-                title: 'choice 6 2 1'
-            }, {
-                id: 511,
-                title: 'choice 6 2 2'
-            }, {
-                id: 512,
-                title: 'choice 6 2 3'
-            }]
-        }]
-    }, {
-        id: 6,
-        title: 'choice 7'
-    }];
-    var comboTree = $('#category-tree').comboTree({
-        source: SampleJSONData,
-        isMultiple: false
+    if (comboTree) {
+        comboTree.destroy();
+    }
+    getCategory((data) => {
+        let code = data.code;
+        if (code !== 0) {
+            console.log(`获取分类失败:code:${code}:message:${data.message}`);
+            return;
+        }
+        let categorys = data.data.children;
+        let targetData = [];
+        let convertCategory = (arr, subs) => {
+            for (let category of arr) {
+                let c = {};
+                c.id = category.id;
+                c.title = category.title;
+                subs.push(c);
+                if (category.children) {
+                    let subCategory = [];
+                    c.subs = subCategory;
+                    convertCategory(category.children, subCategory);
+                }
+            }
+        };
+        convertCategory(categorys, targetData);
+        console.log(targetData);
+        comboTree = $('#category-tree').comboTree({
+            source: targetData,
+            isMultiple: false
+        });
     });
 }
 
 /** 书签信息预览 */
-function initBookmarkPreview(){
-    let bookmarkPreview = new jBox('Tooltip',{
+function initBookmarkPreview() {
+    let bookmarkPreview = new jBox('Tooltip', {
         attach: '.bookmark',
         trigger: 'mouseenter',
         delayOpen: 500,
@@ -202,9 +187,8 @@ function initBookmarkPreview(){
     });
 }
 
-function initKeyEvent(){
-    let f = function(event){
-        console.log('aaa');
+function initKeyEvent() {
+    let f = function (event) {
         if (event.keyCode === 37) {
             $('.main').terseBanner('prev');
         } else if (event.keyCode === 39) {
@@ -212,8 +196,4 @@ function initKeyEvent(){
         };
     }
     $(document).on('keydown', f);
-}
-
-function test(){
-    console.log(cropper.getData());
 }
