@@ -169,24 +169,6 @@ function initCategorySelector() {
     });
 }
 
-/** 书签信息预览 */
-function initBookmarkPreview() {
-    let bookmarkPreview = new jBox('Tooltip', {
-        attach: '.bookmark',
-        trigger: 'mouseenter',
-        delayOpen: 500,
-        position: {
-            x: 'right',
-            y: 'top'
-        },
-        outside: 'x',
-        adjustPosition: true,
-        adjustTracker: true,
-        closeOnMouseleave: true,
-        content: $('.bookmark-preview')
-    });
-}
-
 function initKeyEvent() {
     let f = function (event) {
         if (event.keyCode === 37) {

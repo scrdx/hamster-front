@@ -1,16 +1,16 @@
 .bookmark {
     display: block;
     float: left;
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     margin: 15px 30px;
 }
 
 
 /* Bookmark icon */
 .bookmark-icon {
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     border-radius: 5px;
     box-shadow: 3px 3px 3px rgb(220, 220, 220);
     background-image: url("../icon/pixiv.png");

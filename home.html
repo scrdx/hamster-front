@@ -40,7 +40,7 @@
                 </ul>
             </div>
             <div class="search-container">
-                <input class="search-input hamster-input" type="text" placeholder="标题/标签" />
+                <input id="search-text" class="search-input hamster-input" type="text" placeholder="标题/标签" />
                 <button class="search-button"></button>
             </div>
         </div>
@@ -61,21 +61,7 @@
         </div>
         <!-- sidebar end -->
         <!--bookmark icon panel start-->
-        <div class="main">
-            <ul id="test">
-                <li id="li_test">
-                    <div class="bookmark-wrapper" id="tmp_wrapper">
-                        <div class="bookmark" id="bookmark_tmp">
-                            <a href="#"><div class="bookmark-icon"></div></a>
-                            <div class="bookmark-title">pixiv</div>
-                        </div>
-                        <div class="bookmark">
-                            <a href="#"></a><div class="bookmark-icon"></div></a>
-                            <div class="bookmark-title">pixiv</div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+        <div id="bookmark-main" class="main">
         </div>
         <!-- bookmark icon panel end -->
 
@@ -191,30 +177,11 @@
     <script src="./js/init-context-menu.js"></script>
     <script src="./js/event-handler.js"></script>
     <script src="./js/modules/category.js"></script>
+    <script src="./js/modules/bookmark.js"></script>
     <script src="./js/hamster.js"></script>
     
     <script>
         function init() {
-            //测试使用，生成图标
-            var list = document.getElementById("test");
-            var li = document.getElementById('li_test');
-
-            var bookmark = document.getElementById('bookmark_tmp');
-            var tmp_wrapper = document.getElementById('tmp_wrapper');
-            for (let j = 0; j < 50; j++) {
-                var bookmarkCopy = bookmark.cloneNode(true);
-                tmp_wrapper.appendChild(bookmarkCopy);
-            }
-            for (let i = 0; i < 5; i++) {
-                var element = li.cloneNode(true);
-                list.appendChild(element);
-            }
-
-            $('.main').terseBanner({
-                 auto: 0,
-                 animation: 'slide',
-                 speed: 600
-            });
             $("#menu").accordion();
             initContextMenu();
             initUserProfileMenu();
@@ -227,6 +194,7 @@
 
             //初始化数据
             initCategoryTree();
+            initBookmarkData();
         }
         init();
     </script>

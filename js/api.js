@@ -119,3 +119,30 @@ function addBookmark(bookmark, callback) {
         callback(data);
     })
 }
+
+/**
+ * 根据分类ID查询书签,不分页
+ * 
+ * @param {string} key 关键字（标题或者tag）
+ * @param {number} categoryId 分类ID
+ * @param {Function} callback 
+ */
+function getBookmark(key, categoryId, callback) {
+    let url = `http://${host}/hamster/bookmark/query`;
+    $.ajax({
+        type: 'GET',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        data: {
+            key: key,
+            categoryId: categoryId
+        }
+    }).done((data) => {
+        callback(data);
+    })
+
+}
