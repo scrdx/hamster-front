@@ -26,7 +26,7 @@ function initBookmarkData(categoryId, isRefresh) {
         let bookmarkWrapper;
 
         for (let bookmark of bookmarkArray) {
-            if (count % 20 === 0) {
+            if (count % CONST.PAGESIZE === 0) {
                 li = document.createElement('li');
                 bookmarkWrapper = document.createElement('div');
                 bookmarkWrapper.setAttribute('class', 'bookmark-wrapper');

@@ -22,7 +22,8 @@ function initContextMenu() {
             }
         },
         callback: function(name) {
-            var icon = this;
+            let icon = this;
+            let bookmarkId = icon.getAttribute('id');
             switch (name) {
                 case 'modify':
                     $('#add-bookmark').click();
@@ -35,8 +36,23 @@ function initContextMenu() {
                         content: '确认删除该书签?',
                         closeOnConfirm: false,
                         confirm: function(){
-                            $(icon).remove();
-                            confirm.close();
+                            deleteBookmark(bookmarkId, (data)=> {
+                                if (data.code !== 0) {
+                                    new jBox('Notice',{
+                                        content: data.message,
+                                        color: 'red',
+                                        stack: true,
+                                        closeOnClick: true,
+                                        delayClose: 100
+                                    }).open();
+                                    confirm.close();
+                                    return;
+                                }
+                                $(icon).remove();
+                                //刷新书签面板
+                                initBookmarkData(null, true);
+                                confirm.close();
+                            });
                         }
                     }).open();
                     break;

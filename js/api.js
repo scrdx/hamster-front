@@ -121,6 +121,28 @@ function addBookmark(bookmark, callback) {
 }
 
 /**
+ * 删除书签
+ * 
+ * @param {number} bookmarkId 书签ID
+ * @param {Function} callback 回调
+ */
+function deleteBookmark(bookmarkId, callback) {
+    let url = `http://${host}/hamster/bookmark/delete`;
+    $.ajax({
+        type: 'DELETE',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        data: {id: bookmarkId}
+    }).done((data) => {
+        callback(data);
+    })
+}
+
+/**
  * 根据分类ID查询书签,不分页
  * 
  * @param {string} key 关键字（标题或者tag）

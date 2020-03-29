@@ -1,0 +1,5 @@
+const CONST = {};
+
+CONST.SUCCESS = 0;
+CONST.FAIL = 1;
+CONST.PAGESIZE = 20;
