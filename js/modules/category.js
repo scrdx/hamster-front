@@ -10,14 +10,13 @@ function initCategoryTree() {
             console.log(`获取分类信息异常:code:${data.code},message:${data.message}`);
             return;
         }
-        console.log(data);
         data = data.data;
         if (data.id) {
             root.setAttribute('id', data.id);
             for (let children of data.children) {
                 let li = document.createElement('li');
                 li.setAttribute('id', children.id);
-                li.innerHTML = `<a href="#"> ${children.title}</a>`;
+                li.innerHTML = `<a href="#" id="${children.id}"> ${children.title}</a>`;
                 root.appendChild(li);
                 if (children.children) {
                     renderTree(li, children.children);
@@ -30,7 +29,7 @@ function initCategoryTree() {
     function renderTree(parent, leafArray) {
         for (let leaf of leafArray) {
             let li = document.createElement('li');
-            li.innerHTML = `<a href="#"> ${leaf.title}</a>`;
+            li.innerHTML = `<a href="#" id="${leaf.id}"> ${leaf.title}</a>`;
             li.setAttribute('id', leaf.id);
 
             let submenu = parent.getElementsByClassName('submenu');

@@ -28,7 +28,7 @@ $('#bookmark-form-ok').click(() => {
     param.url = url;
     param.title = title;
     param.description = description;
-    param.categoryId =categoryId;
+    param.categoryId = categoryId;
     if (tags) {
         param.tags = tags.join(',');
     }
@@ -53,8 +53,13 @@ $('#bookmark-form-ok').click(() => {
             closeOnClick: true,
             delayClose: 100
         }).open();
+
+        //刷新书签面板
+        initBookmarkData(undefined, true);
         bookmarkAddWindow.close();
     });
+
+
 });
 
 $('#bookmark-form-upload').click(() => {
@@ -79,11 +84,11 @@ $('#bookmark-form-upload').click(() => {
         let reader = new FileReader();
         reader.onload = (e) => {
             let data = e.target.result;
-            cropper.replace(data);           
+            cropper.replace(data);
         };
         reader.readAsDataURL(file);
     })
 
 
-    
+
 });

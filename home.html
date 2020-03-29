@@ -48,7 +48,7 @@
     <!-- head end-->
 
     <!-- body start -->
-    <div class="body">
+    <div id="body" class="body">
         <!-- sidebar start -->
         <div id="category" class="sidebar">
             <nav id="menu_nav">
@@ -182,19 +182,18 @@
     
     <script>
         function init() {
-            $("#menu").accordion();
-            initContextMenu();
             initUserProfileMenu();
             initBookmarkEditPanel();
             initUserConfigPanel();
             initTagEditor();
             initCategorySelector();
             initKeyEvent();
-            initBookmarkPreview();
+            initContextMenu();
 
             //初始化数据
             initCategoryTree();
             initBookmarkData();
+            
         }
         init();
     </script>
