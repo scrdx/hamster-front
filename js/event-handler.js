@@ -88,7 +88,4 @@ $('#bookmark-form-upload').click(() => {
         };
         reader.readAsDataURL(file);
     })
-
-
-
 });

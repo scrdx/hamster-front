@@ -4,7 +4,7 @@
 function initCategoryTree() {
     let ul = document.getElementById('menu').getElementsByTagName('ul');
     let root = ul[0];
-
+    
     getCategory((data) => {
         if (data.code !== 0) {
             console.log(`获取分类信息异常:code:${data.code},message:${data.message}`);
@@ -24,6 +24,9 @@ function initCategoryTree() {
             }
         }
         $('#menu').accordion();
+
+        //由于查询书签数据需要获取当前用户分类的根节点的ID,所以书签初始化动作需要在分类数据加载完成之后执行
+        initBookmarkData();
     });
 
     function renderTree(parent, leafArray) {
@@ -41,8 +44,6 @@ function initCategoryTree() {
                 submenu.className = 'submenu';
                 submenu.appendChild(li);
                 parent.appendChild(submenu);
-                let title = parent.getElementsByTagName('a')[0];
-                title.innerHTML = title.innerHTML + '<span class="submenu-indicator">+</span>';
             }
             if (leaf.children) {
                 renderTree(li, leaf.children);

@@ -21,28 +21,33 @@
   }
   $.extend(Plugin.prototype, {
     init: function() {
-      this.openSubmenu();
       this.submenuIndicators();
+      this.openSubmenu();
       if (defaults.clickEffect) {
         this.addClickEffect();
       }
     },
+
+    //注册右侧下拉按钮的点击事件
     openSubmenu: function() {
-      $(this.element).children("ul").find("li").bind(defaults.event, function(e) {
+      // $(this.element).children("ul").find("li").bind(defaults.event, function(e) {
+      $(this.element).children("ul").find(".submenu-slidedown").bind(defaults.event, function(e) {
         e.stopPropagation();
         e.preventDefault();
-        var $subMenus = $(this).children("." + defaults.subMenu);
-        var $allSubMenus = $(this).find("." + defaults.subMenu);
+        //获取祖父元素，也就是原来的li元素
+        let item = $(this).parent().parent();
+        var $subMenus = item.children("." + defaults.subMenu);
+        var $allSubMenus = item.find("." + defaults.subMenu);
         if ($subMenus.length > 0) {
           if ($subMenus.css("display") == "none") {
             $subMenus.slideDown(defaults.speed).siblings("a").addClass(defaults.indicator);
             if (defaults.singleOpen) {
-              $(this).siblings().find("." + defaults.subMenu).slideUp(defaults.speed)
+              item.siblings().find("." + defaults.subMenu).slideUp(defaults.speed)
                 .end().find("a").removeClass(defaults.indicator);
             }
             return false;
           } else {
-            $(this).find("." + defaults.subMenu).delay(defaults.hideDelay).slideUp(defaults.speed);
+            item.find("." + defaults.subMenu).delay(defaults.hideDelay).slideUp(defaults.speed);
           }
           if ($allSubMenus.siblings("a").hasClass(defaults.indicator)) {
             $allSubMenus.siblings("a").removeClass(defaults.indicator);
@@ -50,12 +55,24 @@
         }
         // window.location.href = $(this).children("a").attr("href");
       });
+      $(this.element).children("ul").find("li").bind(defaults.event, function(e) {
+        e.stopPropagation();
+        let categoryId = this.getAttribute('id');
+        console.log(`点击分类项:id:${categoryId}`);
+        initBookmarkData(categoryId, true);
+      });
     },
+
+    //给拥有子节点的列表项添加右侧的指示符
     submenuIndicators: function() {
       if ($(this.element).find("." + defaults.subMenu).length > 0) {
         $(this.element).find("." + defaults.subMenu).siblings("a").append("<span class='submenu-indicator'>+</span>");
+
+        $(this.element).find("." + defaults.subMenu).siblings("a").append("<div class='submenu-slidedown'></div>");
       }
     },
+
+    //添加点击之后的波纹特效
     addClickEffect: function() {
       var ink, d, x, y;
       $(this.element).find("a").bind("click touchstart", function(e) {
@@ -92,7 +109,7 @@
       } else {
         let tmp = $.data(this, "plugin_" + pluginName);
         tmp.reset();
-        tmp.openSubmenu();
+        tmp.init();
       }
     });
     return this;

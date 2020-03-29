@@ -326,3 +326,14 @@
 .white.menu>ul>li>a>.ink {
     background: rgba(0, 0, 0, 0.1);
 }
+
+
+/* 自定义样式 */
+.submenu-slidedown {
+    position: absolute;
+    height: 100%;
+    width: 60px;
+    right: 0px;
+    top: 0px;
+    border-left: dashed 1px #9fc2c0;
+}

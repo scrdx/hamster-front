@@ -138,7 +138,8 @@ function initContextMenu() {
                                 }
                                 let submenu = category.getElementsByClassName('submenu');
                                 let li = document.createElement('li');
-                                li.innerHTML = `<a href="#"> ${categoryName}</a>`;
+                                li.setAttribute('id', data.data);
+                                li.innerHTML = `<a href="#" id=${data.data}> ${categoryName}</a>`;
                                 li.setAttribute('id', data.data);
                                 if (submenu.length > 0) {
                                     submenu = submenu[0];
@@ -253,7 +254,8 @@ function initContextMenu() {
                         if (ul.length > 0) {
                             ul = ul[0];
                             li = document.createElement('li');
-                            li.innerHTML = `<a href="#"> ${categoryName}</a>`;
+                            li.setAttribute('id', data.data);
+                            li.innerHTML = `<a href="#" id=${data.data}> ${categoryName}</a>`;
                             ul.appendChild(li);
                         }
                         $("#menu").accordion();

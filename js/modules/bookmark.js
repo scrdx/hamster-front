@@ -1,10 +1,11 @@
 function initBookmarkData(categoryId, isRefresh) {
     let key = $('#search-text').val();
-
-    if (categoryId) {
+    
+    if (!categoryId) {
         let ul = document.getElementById('menu').getElementsByTagName('ul');
         let root = ul[0];
         categoryId = root.getAttribute('id');
+        console.log(`root categoryId :${categoryId}`);
     }
 
     getBookmark(key, categoryId, (data) => {
