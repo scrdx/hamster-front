@@ -335,5 +335,22 @@
     width: 60px;
     right: 0px;
     top: 0px;
-    border-left: dashed 1px #9fc2c0;
+}
+
+.submenu-slidedown:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    bottom: auto;
+    right: auto;
+    height: 70%;
+    width: 1px;
+    background-color: #f2f2f2;
+}
+
+.submenu-slidedown:hover {
+    box-shadow: inset 1px 1px 3px 0px rgb(220, 220, 220),inset 0 -1px 3px 0px rgb(220, 220, 220);
+    /* background-color: rgba(240, 240, 240, 0.637); */
+    /* background-color: rgba(240, 240, 240); */
 }

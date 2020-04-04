@@ -1,5 +1,5 @@
 /* accordion menu plugin*/
-;(function($, window, document, undefined) {
+; (function ($, window, document, undefined) {
   var pluginName = "accordion";
   var defaults = {
     speed: 200,
@@ -20,7 +20,7 @@
     this.init();
   }
   $.extend(Plugin.prototype, {
-    init: function() {
+    init: function () {
       this.submenuIndicators();
       this.openSubmenu();
       if (defaults.clickEffect) {
@@ -29,9 +29,9 @@
     },
 
     //注册右侧下拉按钮的点击事件
-    openSubmenu: function() {
+    openSubmenu: function () {
       // $(this.element).children("ul").find("li").bind(defaults.event, function(e) {
-      $(this.element).children("ul").find(".submenu-slidedown").bind(defaults.event, function(e) {
+      $(this.element).children("ul").find(".submenu-slidedown").bind(defaults.event, function (e) {
         e.stopPropagation();
         e.preventDefault();
         //获取祖父元素，也就是原来的li元素
@@ -55,16 +55,23 @@
         }
         // window.location.href = $(this).children("a").attr("href");
       });
-      $(this.element).children("ul").find("li").bind(defaults.event, function(e) {
+      $(this.element).children("ul").find("li").bind(defaults.event, function (e) {
         e.stopPropagation();
         let categoryId = this.getAttribute('id');
+
+        //取消别的列表项的选中
+        $('#category').find('.active').removeClass('active');
+        //设置选中
+        this.setAttribute('class', 'active');
+
+
         console.log(`点击分类项:id:${categoryId}`);
         initBookmarkData(categoryId, true);
       });
     },
 
     //给拥有子节点的列表项添加右侧的指示符
-    submenuIndicators: function() {
+    submenuIndicators: function () {
       if ($(this.element).find("." + defaults.subMenu).length > 0) {
         $(this.element).find("." + defaults.subMenu).siblings("a").append("<span class='submenu-indicator'>+</span>");
 
@@ -73,9 +80,9 @@
     },
 
     //添加点击之后的波纹特效
-    addClickEffect: function() {
+    addClickEffect: function () {
       var ink, d, x, y;
-      $(this.element).find("a").bind("click touchstart", function(e) {
+      $(this.element).find("a").bind("click touchstart", function (e) {
         $(".ink").remove();
         if ($(this).children(".ink").length === 0) {
           $(this).prepend("<span class='ink'></span>");
@@ -98,12 +105,12 @@
       });
     },
     //取消列表项上绑定的事件
-    reset(){
+    reset() {
       $(this.element).children("ul").find("li").off();
     }
   });
-  $.fn[pluginName] = function(options) {
-    this.each(function() {
+  $.fn[pluginName] = function (options) {
+    this.each(function () {
       if (!$.data(this, "plugin_" + pluginName)) {
         $.data(this, "plugin_" + pluginName, new Plugin(this, options));
       } else {
