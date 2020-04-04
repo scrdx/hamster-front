@@ -131,10 +131,7 @@ function setBookmarkPreviewData(bookmarkId) {
     //标签
     let previewTagWrapper = document.getElementById('preview-tag-wrapper');
     //移除原来的标签
-    let oldTags = previewTagWrapper.getElementsByTagName('a');
-    for (let tag of oldTags) {
-        previewTagWrapper.removeChild(tag);
-    }
+    previewTagWrapper.innerHTML = '<span class="preview-des">标签：</span>';
     if (!bookmark.tagInfoList) {
         return;
     }
