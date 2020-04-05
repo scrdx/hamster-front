@@ -57,6 +57,8 @@ $('#bookmark-form-ok').click(() => {
         //刷新书签面板
         initBookmarkData(undefined, true);
         bookmarkAddWindow.close();
+        //清除对话框数据
+        clear();
     });
 
 
@@ -89,3 +91,12 @@ $('#bookmark-form-upload').click(() => {
         reader.readAsDataURL(file);
     })
 });
+
+$('#bookmark-form-cancel').click(() => {
+    bookmarkAddWindow.close();
+    clear();
+})
+
+$('#bookmark-form-empty').click(() => {
+    clear();
+})

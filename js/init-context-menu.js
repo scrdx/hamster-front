@@ -21,24 +21,26 @@ function initContextMenu() {
                 'txt': '共享'
             }
         },
-        callback: function(name) {
+        callback: function (name) {
             let icon = this;
             let bookmarkId = icon.getAttribute('id');
             switch (name) {
                 case 'modify':
+                    //设置编辑框的值
+                    setBookmarkEditPanelValue(bookmarkId);
                     $('#add-bookmark').click();
                     break;
                 case 'delete':
-                    var confirm = new jBox('Confirm',{
+                    var confirm = new jBox('Confirm', {
                         draggable: true,
                         confirmButton: '确定',
                         cancelButton: '取消',
                         content: '确认删除该书签?',
                         closeOnConfirm: false,
-                        confirm: function(){
-                            deleteBookmark(bookmarkId, (data)=> {
+                        confirm: function () {
+                            deleteBookmark(bookmarkId, (data) => {
                                 if (data.code !== 0) {
-                                    new jBox('Notice',{
+                                    new jBox('Notice', {
                                         content: data.message,
                                         color: 'red',
                                         stack: true,
@@ -64,36 +66,36 @@ function initContextMenu() {
                     break;
             }
         },
-        callbefore: function() {
+        callbefore: function () {
             console.log('you have panel [ ', this, ']');
         }
     });
 
     //图标面板右键菜单
     var bookmarkWrapper = util.panel({
-            elem: $('.main'),
-            targets: '.bookmark-wrapper',
-            list: {
-                'add': {
-                    'txt': '添加'
-                },
-                'select': {
-                    'txt': '批量选择'
-                }
+        elem: $('.main'),
+        targets: '.bookmark-wrapper',
+        list: {
+            'add': {
+                'txt': '添加'
             },
-            callback: function(name) {
-                console.log('you have chioce "', name, '" from the [ ', this, ']');
-                if (name === 'add') {
-                    $('#add-bookmark').click();
-                } else if (name === 'select') {
-                    alert('批量选择');
-                }
-            },
-            callbefore: function() {
-                console.log('you have panel [ ', this, ']');
-
+            'select': {
+                'txt': '批量选择'
             }
+        },
+        callback: function (name) {
+            console.log('you have chioce "', name, '" from the [ ', this, ']');
+            if (name === 'add') {
+                $('#add-bookmark').click();
+            } else if (name === 'select') {
+                alert('批量选择');
+            }
+        },
+        callbefore: function () {
+            console.log('you have panel [ ', this, ']');
+
         }
+    }
     );
     //分类列表右键菜单
     var categoryRightMenu = util.panel({
@@ -107,7 +109,7 @@ function initContextMenu() {
                 'txt': '删除'
             }
         },
-        callback: function(name) {
+        callback: function (name) {
             var category = this;
             switch (name) {
                 case 'add':
@@ -118,23 +120,23 @@ function initContextMenu() {
                         cancelButton: '取消',
                         content: $('.category-add-panel'),
                         closeOnConfirm: false,
-                        confirm: function() {
+                        confirm: function () {
                             let categoryName = $('#category-add-text').val();
                             if (isEmpty(categoryName)) {
                                 alert('分类名称不能为空');
                                 return;
                             }
                             let id = category.getAttribute("id");
-                            addCategory(id, categoryName, (data)=>{
+                            addCategory(id, categoryName, (data) => {
                                 if (data.code !== 0) {
                                     console.log(`添加失败,code:${data.code},message:${data.message}`);
-                                    new jBox('Notice',{
+                                    new jBox('Notice', {
                                         content: data.message,
                                         color: 'blue',
                                         stack: true,
                                         closeOnClick: true,
                                         delayClose: 100
-                                    }).open();   
+                                    }).open();
                                 }
                                 let submenu = category.getElementsByClassName('submenu');
                                 let li = document.createElement('li');
@@ -154,7 +156,8 @@ function initContextMenu() {
                                 }
                                 $("#menu").accordion();
                                 categoryAddPanel.close();
-                            });                       
+                                clear();
+                            });
                         }
                     }).open();
                     break;
@@ -163,46 +166,46 @@ function initContextMenu() {
                     let id = category.getAttribute('id');
                     console.log(id);
                     if (submenu.length > 0) {
-                        new jBox('Notice',{
+                        new jBox('Notice', {
                             content: '该分类下有子分类，无法删除!',
                             color: 'blue',
                             stack: true,
                             closeOnClick: true,
                             delayClose: 100
-                        }).open();                               
+                        }).open();
                     } else {
-                        var confirm = new jBox('Confirm',{
+                        var confirm = new jBox('Confirm', {
                             draggable: true,
                             confirmButton: '确定',
                             cancelButton: '取消',
                             content: '确认删除该分类?',
                             closeOnConfirm: false,
-                            confirm: function(){
-                                deleteCategory(id, (data)=>{
+                            confirm: function () {
+                                deleteCategory(id, (data) => {
                                     if (data.code !== 0) {
                                         console.log(`删除分类异常:code:${data.code}:message:${data.message}`);
-                                        new jBox('Notice',{
+                                        new jBox('Notice', {
                                             content: data.message,
                                             color: 'blue',
                                             stack: true,
                                             closeOnClick: true,
                                             delayClose: 100
-                                        }).open();   
+                                        }).open();
                                         return;
                                     }
                                     let siblings = $(category).siblings();
-                                    let parent = $(category).parent();                           
+                                    let parent = $(category).parent();
                                     $(category).remove();
                                     if (siblings.length === 0) {
                                         let title = parent.prev();
                                         title.removeClass();
                                         title.find('.submenu-indicator').remove();
-                                        parent.remove();                                                                        
+                                        parent.remove();
                                     }
                                     confirm.close();
                                 });
                             }
-                        }).open();                        
+                        }).open();
                     }
 
                     break;
@@ -210,7 +213,7 @@ function initContextMenu() {
                     break;
             }
         },
-        callbefore: function() {
+        callbefore: function () {
             // console.log('you have panel [ ', this, ']');
         }
     });
@@ -223,7 +226,7 @@ function initContextMenu() {
                 'txt': '添加'
             }
         },
-        callback: function(name) {
+        callback: function (name) {
             let category = this;
             var categoryAddPanel = new jBox('Confirm', {
                 title: '添加分类',
@@ -232,15 +235,15 @@ function initContextMenu() {
                 cancelButton: '取消',
                 content: $('.category-add-panel'),
                 closeOnConfirm: false,
-                confirm: function() {
+                confirm: function () {
                     let categoryName = $('#category-add-text').val();
                     if (isEmpty(categoryName)) {
                         alert('分类名称不能为空');
                         return;
                     }
-                    addCategory(1, categoryName, (data)=>{
+                    addCategory(1, categoryName, (data) => {
                         if (data.code !== 0) {
-                            new jBox('Notice',{
+                            new jBox('Notice', {
                                 content: data.message,
                                 color: 'blue',
                                 stack: true,
@@ -260,12 +263,30 @@ function initContextMenu() {
                         }
                         $("#menu").accordion();
                         categoryAddPanel.close();
+                        clear();
                     });
                 }
             }).open();
         },
-        callbefore: function() {
+        callbefore: function () {
             // console.log('you have panel [ ', this, ']');
         }
     });
+}
+
+function setBookmarkEditPanelValue(bookmarkId) {
+    let bookmark = CACHE.bookmarkMap.get(bookmarkId);
+    console.log(bookmark);
+    $('#bookmark-form-url-text').val(bookmark.url);
+    $('#bookmark-form-title').val(bookmark.title);
+    $('#bookmark-form-description').val(bookmark.description);
+    let id = [];
+    id.push(bookmark.categoryId);
+    comboTree.setSelection(id);
+    if (!bookmark.tagInfoList) {
+        return;
+    }
+    for (let tag of bookmark.tagInfoList) {
+        $('#bookmark-form-tag').tagEditor('addTag', tag.name, false);
+    }
 }

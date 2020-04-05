@@ -92,7 +92,7 @@ function initBookmarkPreview() {
     new jBox('Tooltip', {
         attach: '.bookmark',
         trigger: 'mouseenter',
-        delayOpen: 500,
+        delayOpen: 300,
         position: {
             x: 'right',
             y: 'top'
@@ -126,7 +126,7 @@ function setBookmarkPreviewData(bookmarkId) {
 
     //分类
     let previewCategory = document.getElementById('preview-category');
-    previewCategory.innerHTML = `<span class="preview-des">分类：</span>${bookmark.categoryId}`;
+    previewCategory.innerHTML = `<span class="preview-des">分类：</span>${bookmark.categoryName}`;
     
     //标签
     let previewTagWrapper = document.getElementById('preview-tag-wrapper');
