@@ -30,6 +30,7 @@ function initBookmarkEditPanel() {
     let viewportHeight = window.innerHeight;
     let width = viewportWidth >= 1024 ? 600 : 500;
     let height = viewportHeight >= 768 ? 600 : viewportHeight - 100;
+    //图片编辑框设为初始化操作放到onOpen中是为了避免关闭model框时图片编辑框闪烁一下的问题
     bookmarkAddWindow = new jBox('Modal', {
         id: 'addBookmark',
         width: width,
@@ -45,7 +46,12 @@ function initBookmarkEditPanel() {
         repositionOnOpen: false,
         repositionOnContent: false,
         content: $('.bookmark-edit-panel'),
-        onOpen: initCategorySelector,
+        onOpen: () => {
+            // initCategorySelector();
+            if (cropper) {
+                cropper.replace('./img/default_avator.png');
+            }
+        },
         onClose: clear
     });
 }
@@ -162,7 +168,6 @@ function initCategorySelector() {
             }
         };
         convertCategory(categorys, targetData);
-        console.log(targetData);
         comboTree = $('#category-tree').comboTree({
             source: targetData,
             isMultiple: false

@@ -99,7 +99,7 @@ function getCategory(callback) {
 }
 
 /**
- * 添加分类
+ * 添加书签
  * 
  * @param {Object} bookmark 
  * @param {Function} callback 
@@ -136,7 +136,29 @@ function deleteBookmark(bookmarkId, callback) {
             withCredentials: true
         },
         contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
-        data: {id: bookmarkId}
+        data: { id: bookmarkId }
+    }).done((data) => {
+        callback(data);
+    })
+}
+
+/**
+ * 更新书签
+ * 
+ * @param {Object} bookmark 
+ * @param {Function} callback 
+ */
+function updateBookmark(bookmark, callback) {
+    let url = `http://${host}/hamster/bookmark/update`;
+    $.ajax({
+        type: 'POST',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/json',
+        data: JSON.stringify(bookmark)
     }).done((data) => {
         callback(data);
     })

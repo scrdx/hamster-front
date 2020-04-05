@@ -28,6 +28,7 @@ function initContextMenu() {
                 case 'modify':
                     //设置编辑框的值
                     setBookmarkEditPanelValue(bookmarkId);
+                    CACHE.currentOperate = CONST.UPDATE;
                     $('#add-bookmark').click();
                     break;
                 case 'delete':
@@ -86,6 +87,7 @@ function initContextMenu() {
         callback: function (name) {
             console.log('you have chioce "', name, '" from the [ ', this, ']');
             if (name === 'add') {
+                CACHE.currentOperate = CONST.ADD;
                 $('#add-bookmark').click();
             } else if (name === 'select') {
                 alert('批量选择');
@@ -157,6 +159,7 @@ function initContextMenu() {
                                 $("#menu").accordion();
                                 categoryAddPanel.close();
                                 clear();
+                                initCategorySelector();
                             });
                         }
                     }).open();
@@ -203,6 +206,7 @@ function initContextMenu() {
                                         parent.remove();
                                     }
                                     confirm.close();
+                                    initCategorySelector();
                                 });
                             }
                         }).open();
@@ -264,6 +268,7 @@ function initContextMenu() {
                         $("#menu").accordion();
                         categoryAddPanel.close();
                         clear();
+                        initCategorySelector();
                     });
                 }
             }).open();
@@ -277,12 +282,13 @@ function initContextMenu() {
 function setBookmarkEditPanelValue(bookmarkId) {
     let bookmark = CACHE.bookmarkMap.get(bookmarkId);
     console.log(bookmark);
+    $('#bookmarkId').attr('bookmarkId', bookmark.id);
     $('#bookmark-form-url-text').val(bookmark.url);
     $('#bookmark-form-title').val(bookmark.title);
     $('#bookmark-form-description').val(bookmark.description);
-    let id = [];
-    id.push(bookmark.categoryId);
-    comboTree.setSelection(id);
+    let categoryId = [];
+    categoryId.push(bookmark.categoryId);
+    comboTree.setSelection(categoryId);
     if (!bookmark.tagInfoList) {
         return;
     }

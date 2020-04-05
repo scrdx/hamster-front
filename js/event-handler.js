@@ -18,6 +18,7 @@ $('#logout').click(function () {
 });
 
 $('#bookmark-form-ok').click(() => {
+    let id = $('#bookmarkId').attr('bookmarkId');
     let url = $('#bookmark-form-url-text').val();
     let title = $('#bookmark-form-title').val();
     let description = $('#bookmark-form-description').val();
@@ -25,6 +26,7 @@ $('#bookmark-form-ok').click(() => {
     let tags = $('#bookmark-form-tag').tagEditor('getTags')[0].tags;
     let cropData = cropper.getData();
     let param = {};
+    param.id = id;
     param.url = url;
     param.title = title;
     param.description = description;
@@ -33,34 +35,66 @@ $('#bookmark-form-ok').click(() => {
         param.tags = tags.join(',');
     }
     param.cropParam = cropData;
-    param.pic = document.getElementById('icon-image').getAttribute('src');
-    addBookmark(param, (data) => {
-        if (data.code !== 0) {
-            console.log(`添加书签失败!code:${data.code}:message:${data.message}`);
+    let picData = document.getElementById('icon-image').getAttribute('src');
+    if (picData.indexOf('data:image') !== -1) {
+        param.pic = picData;
+    }
+
+    if (CACHE.currentOperate === CONST.ADD) {
+        addBookmark(param, (data) => {
+            if (data.code !== 0) {
+                console.log(`添加书签失败!code:${data.code}:message:${data.message}`);
+                new jBox('Notice', {
+                    content: data.message,
+                    color: 'red',
+                    stack: true,
+                    closeOnClick: true,
+                    delayClose: 100
+                }).open();
+                return;
+            }
             new jBox('Notice', {
-                content: data.message,
-                color: 'red',
+                content: '添加成功',
+                color: 'green',
                 stack: true,
                 closeOnClick: true,
                 delayClose: 100
             }).open();
-            return;
-        }
-        new jBox('Notice', {
-            content: '添加成功',
-            color: 'green',
-            stack: true,
-            closeOnClick: true,
-            delayClose: 100
-        }).open();
-
-        //刷新书签面板
-        initBookmarkData(undefined, true);
-        bookmarkAddWindow.close();
-        //清除对话框数据
-        clear();
-    });
-
+    
+            //刷新书签面板
+            initBookmarkData(undefined, true);
+            bookmarkAddWindow.close();
+            //清除对话框数据
+            clear();
+        });
+    } else if (CACHE.currentOperate === CONST.UPDATE) {
+        updateBookmark(param, (data) => {
+            if (data.code !== 0) {
+                console.log(`修改书签失败!code:${data.code}:message:${data.message}`);
+                new jBox('Notice', {
+                    content: data.message,
+                    color: 'red',
+                    stack: true,
+                    closeOnClick: true,
+                    delayClose: 100
+                }).open();
+                return;
+            }
+            new jBox('Notice', {
+                content: '修改成功',
+                color: 'green',
+                stack: true,
+                closeOnClick: true,
+                delayClose: 100
+            }).open();
+    
+            //刷新书签面板
+            initBookmarkData(undefined, true);
+            bookmarkAddWindow.close();
+            //清除对话框数据
+            clear();
+        });
+    }
 
 });
 

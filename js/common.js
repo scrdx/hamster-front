@@ -25,4 +25,7 @@ function clear() {
 
     //分类添加对话框
     $('#category-add-text').val('');
+
+    //书签编辑框状态默认为添加状态
+    CACHE.currentOperate = CONST.ADD;
 }

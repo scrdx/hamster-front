@@ -72,6 +72,7 @@
     <!-- bookmark add window-->
     <div class="bookmark-edit-panel">
         <div class="bookmark-edit-form">
+            <input type="hidden" id="bookmarkId" />
             <div class="bookmark-form-url">
                 <input type="text" name="url" class="hamster-input" id="bookmark-form-url-text" placeholder="URL">
                 <button id="bookmark-form-url-get">GET</button>
@@ -93,7 +94,7 @@
             <input type="file" id="icon-file" style="display:none" />
             <div class="icon-wrapper">
                 <div class="icon-editor">
-                    <img id="icon-image" src="./img/profile.jpg">
+                    <img id="icon-image" src="./img/default_avator.png">
                 </div>
                 <div class="bookmark-form-icon-preview">
                     <div class="icon-preview preview-sm"></div>
@@ -173,8 +174,8 @@
     <script src="./js/plugin/comboTreePlugin.js"></script>
 
     <!--JS-->
-    <script src="./js/cache.js"></script>
     <script src="./js/const.js"></script>
+    <script src="./js/cache.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/api.js"></script>
     <script src="./js/init-context-menu.js"></script>
