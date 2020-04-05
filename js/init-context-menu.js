@@ -287,6 +287,6 @@ function setBookmarkEditPanelValue(bookmarkId) {
         return;
     }
     for (let tag of bookmark.tagInfoList) {
-        $('#bookmark-form-tag').tagEditor('addTag', tag.name, false);
+        $('#bookmark-form-tag').tagEditor('addTag', tag.name, true);
     }
 }

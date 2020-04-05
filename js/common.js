@@ -21,6 +21,7 @@ function clear() {
     $('#category-tree').val('');
     let tags = $('#bookmark-form-tag').tagEditor('getTags')[0].tags;
     for (i = 0; i < tags.length; i++) { $('#bookmark-form-tag').tagEditor('removeTag', tags[i]); }
+    // $('#bookmark-form-tag').tagEditor('getTags')
 
     //分类添加对话框
     $('#category-add-text').val('');
