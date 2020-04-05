@@ -204,8 +204,10 @@
     width: calc(100% - 180px);
     height: 100%;
     float: left;
-    overflow: hidden;
+    overflow-y: auto;
 }
+/*隐藏滚动条*/
+/* .preview-info::-webkit-scrollbar {display:none} */
 .preview-des {
     font-weight: 300;
     font-size: 12px;

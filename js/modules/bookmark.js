@@ -92,6 +92,7 @@ function initBookmarkPreview() {
     new jBox('Tooltip', {
         attach: '.bookmark',
         trigger: 'mouseenter',
+        isolateScroll: false,
         delayOpen: 300,
         position: {
             x: 'right',
