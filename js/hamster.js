@@ -45,7 +45,8 @@ function initBookmarkEditPanel() {
         repositionOnOpen: false,
         repositionOnContent: false,
         content: $('.bookmark-edit-panel'),
-        onOpen: initCategorySelector
+        onOpen: initCategorySelector,
+        onClose: clear
     });
 }
 
