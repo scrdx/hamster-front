@@ -32,7 +32,7 @@
             <div class="nav-button">
                 <a href="#">标签</a>
             </div>
-            <div class="avatar"> </div>
+            <div class="avatar" id="header-avatar"> </div>
             <div class="profile-menu">
                 <ul>
                     <li><a href="#">信息</a></li>
@@ -94,7 +94,7 @@
             <input type="file" id="icon-file" style="display:none" />
             <div class="icon-wrapper">
                 <div class="icon-editor">
-                    <img id="icon-image" src="./img/default_avator.png">
+                    <img id="icon-image" src="./img/default_icon.png">
                 </div>
                 <div class="bookmark-form-icon-preview">
                     <div class="icon-preview preview-sm"></div>
@@ -113,27 +113,28 @@
 
     <!-- 用户配置界面 -->
     <div class="user-config-panel">
-        <form class="user-config-form">
+        <div class="user-config-form">
+            <input type="file" id="avatar-file" style="display:none" />
             <label><input type="text" name="nickname" class="hamster-input" id="user-config-form-nickname"
                     placeholder="昵称"></label><br>
 
             <div class="icon-wrapper">
                 <div class="icon-editor">
-                    <img id="avator-image" src="./img/profile.jpg">
+                    <img id="avatar-image" src="./img/default_icon.png">
                 </div>
                 <div class="user-config-form-icon-preview">
-                    <div class="avator-preview preview-md"></div>
+                    <div class="avatar-preview preview-md"></div>
                 </div>
             </div>
 
             <div id="button-group">
-                <button type="button" class="hamster-button form-upload" id="avator-form-upload">upload</button>
-                <button type="button" class="hamster-button form-ok" id="avator-form-ok" onclick="test()">确定</button>
-                <button type="button" class="hamster-button form-cancel" id="avator-form-cancel">取消</button>
-                <button type="button" class="hamster-button form-empty" id="avator-form-empty">清空</button>
+                <button type="button" class="hamster-button form-upload" id="avatar-form-upload">upload</button>
+                <button type="button" class="hamster-button form-ok" id="avatar-form-ok">确定</button>
+                <button type="button" class="hamster-button form-cancel" id="avatar-form-cancel">取消</button>
+                <button type="button" class="hamster-button form-empty" id="avatar-form-empty">清空</button>
             </div>
 
-        </form>
+        </div>
     </div>
 
     <!-- 添加分类弹窗 -->
@@ -186,6 +187,8 @@
 
     <script>
         function init() {
+            setUserInfo();
+
             initUserProfileMenu();
             initBookmarkEditPanel();
             initUserConfigPanel();

@@ -2,6 +2,7 @@
 var cropper;
 var configCropper;
 var bookmarkAddWindow;
+var userConfigEditWindow;
 
 /**
  * 初始化用户菜单
@@ -47,9 +48,8 @@ function initBookmarkEditPanel() {
         repositionOnContent: false,
         content: $('.bookmark-edit-panel'),
         onOpen: () => {
-            // initCategorySelector();
             if (cropper) {
-                cropper.replace('./img/default_avator.png');
+                cropper.replace('./img/default_icon.png');
             }
         },
         onClose: clear
@@ -64,7 +64,7 @@ function initUserConfigPanel() {
     let viewportHeight = window.innerHeight;
     let width = viewportWidth >= 1024 ? 500 : 500;
     let height = viewportHeight >= 768 ? 400 : viewportHeight - 100;
-    new jBox('Modal', {
+    userConfigEditWindow = new jBox('Modal', {
         id: 'userConfig',
         width: width,
         height: height,
@@ -78,7 +78,10 @@ function initUserConfigPanel() {
         title: '用户配置',
         repositionOnOpen: false,
         repositionOnContent: false,
-        content: $('.user-config-panel')
+        content: $('.user-config-panel'),
+        onOpen: ()=>{
+            $('#user-config-form-nickname').val(CACHE.userInfo.nickname);
+        }
     });
 }
 
@@ -125,10 +128,10 @@ function initConfigCropper() {
     if (!isFirstOpenConfigPanel) {
         return;
     }
-    var image = document.getElementById('avator-image');
+    var image = document.getElementById('avatar-image');
     var options = {
         aspectRatio: 1 / 1,
-        preview: '.avator-preview',
+        preview: '.avatar-preview',
         minContainerWidth: 200,
         minContainerHeight: 200,
         dragMode: "move",
@@ -172,6 +175,20 @@ function initCategorySelector() {
             source: targetData,
             isMultiple: false
         });
+    });
+}
+
+function setUserInfo() {
+    getUserInfo((data)=>{
+        console.log(data);
+        if (!data || data.code !== 0) {
+            //获取用户信息失败,返回登录页面
+            window.location.href = 'login.html';
+        }
+        let userInfo = data.data;
+        document.getElementById('header-avatar').style.backgroundImage = `url(${userInfo.avatarUrl})`;
+        CACHE.userInfo.userCode = userInfo.userCode;
+        CACHE.userInfo.nickname = userInfo.nickname;
     });
 }
 

@@ -29,6 +29,48 @@ function login(userCode, nickname, password) {
 }
 
 /**
+ * 获取用户信息
+ * 
+ * @param {Function} callback 
+ */
+function getUserInfo(callback) {
+    let url = `http://${host}/hamster/user/getUserInfo`;
+    $.ajax({
+        type: 'GET',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8'
+    }).done((data)=>{
+        callback(data);
+    });
+}
+
+/**
+ * 配置用户信息
+ * 
+ * @param {Object} user 
+ * @param {Function} callback 
+ */
+function editUserConfig(user, callback) {
+    let url = `http://${host}/hamster/user/config`;
+    $.ajax({
+        type: 'POST',
+        url: url,
+        contentType: 'application/json',
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        data: JSON.stringify(user)
+    }).done((data) => {
+        callback(data);
+    })
+}
+
+/**
  * 添加分类
  * 
  * @param {number} parentId 父分类ID

@@ -262,11 +262,11 @@
     width: calc(90% - 200px);
     height: 305px;
 }
-#avator-image{
+#avatar-image{
     width: 200px;
     height: 200px;
 }
-.avator-preview {
+.avatar-preview {
     margin: 20px;
     overflow: hidden;
     border-radius: 13px;
@@ -274,7 +274,7 @@
     background-color: #000;
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC");
 }
-.avator-preview:hover {
+.avatar-preview:hover {
     box-shadow: 3px 3px 100px rgb(83, 83, 231);
     /* 阴影向四周扩散 */
     box-shadow: 3px 3px 15px rgb(83, 83, 231);

@@ -85,7 +85,6 @@ function initContextMenu() {
             }
         },
         callback: function (name) {
-            console.log('you have chioce "', name, '" from the [ ', this, ']');
             if (name === 'add') {
                 CACHE.currentOperate = CONST.ADD;
                 $('#add-bookmark').click();
@@ -94,8 +93,6 @@ function initContextMenu() {
             }
         },
         callbefore: function () {
-            console.log('you have panel [ ', this, ']');
-
         }
     }
     );
@@ -281,7 +278,6 @@ function initContextMenu() {
 
 function setBookmarkEditPanelValue(bookmarkId) {
     let bookmark = CACHE.bookmarkMap.get(bookmarkId);
-    console.log(bookmark);
     $('#bookmarkId').attr('bookmarkId', bookmark.id);
     $('#bookmark-form-url-text').val(bookmark.url);
     $('#bookmark-form-title').val(bookmark.title);

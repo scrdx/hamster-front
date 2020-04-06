@@ -28,4 +28,10 @@ function clear() {
 
     //书签编辑框状态默认为添加状态
     CACHE.currentOperate = CONST.ADD;
+
+    //用户配置弹窗信息
+    $('#user-config-form-nickname').val('');
+    if (configCropper) {
+        configCropper.replace('./img/default_icon.png');
+    }
 }

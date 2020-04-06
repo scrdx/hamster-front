@@ -134,3 +134,84 @@ $('#bookmark-form-cancel').click(() => {
 $('#bookmark-form-empty').click(() => {
     clear();
 })
+
+//用户配置
+$('#avatar-form-upload').click(() => {
+    let fileInput = document.getElementById('avatar-file');
+    $('#avatar-file').click();
+    fileInput.addEventListener('change', () => {
+        if (!fileInput.value) {
+            return;
+        }
+        let file = fileInput.files[0];
+        console.log(file.name);
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+            new jBox('Notice', {
+                content: '请选择图片文件!',
+                color: 'blue',
+                stack: true,
+                closeOnClick: true,
+                delayClose: 100
+            }).open();
+            return;
+        }
+        let reader = new FileReader();
+        reader.onload = (e) => {
+            let data = e.target.result;
+            configCropper.replace(data);
+        };
+        reader.readAsDataURL(file);
+    })
+});
+
+$('#avatar-form-ok').click(() => {
+    let nickname = $('#user-config-form-nickname').val();
+    let cropData = configCropper.getData();
+    let param = {};
+    param.nickname = nickname;
+    param.cropParam = cropData;
+    let picData = document.getElementById('avatar-image').getAttribute('src');
+    if (picData.indexOf('data:image') !== -1) {
+        param.avatarPic = picData;
+    }
+    editUserConfig(param, (data) => {
+        if (data.code !== 0) {
+            console.log(`编辑用户信息失败!code:${data.code}:message:${data.message}`);
+            new jBox('Notice', {
+                content: data.message,
+                color: 'red',
+                stack: true,
+                closeOnClick: true,
+                delayClose: 100
+            }).open();
+            return;
+        }
+        let userInfo = data.data;
+        document.getElementById('header-avatar').style.backgroundImage = `url(${userInfo.avatarUrl})`;
+        CACHE.userInfo.userCode = userInfo.userCode;
+        CACHE.userInfo.nickname = userInfo.nickname;
+        console.log(CACHE.userInfo.nickname);
+        new jBox('Notice', {
+            content: '编辑成功',
+            color: 'green',
+            stack: true,
+            closeOnClick: true,
+            delayClose: 100
+        }).open();
+
+        //刷新书签面板
+        userConfigEditWindow.close();
+        //清除对话框数据
+        clear();
+    });
+    
+});
+
+$('#avatar-form-cancel').click(() => {
+    userConfigEditWindow.close();
+    clear();
+});
+
+$('#avatar-form-empty').click(() => {
+    clear();
+});
