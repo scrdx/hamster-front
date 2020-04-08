@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+	<link href="http://cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
+	<link href="./css/csshake.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class='login'>
+		<div class='login_title'>
+			<span>Hamster Login</span>
+		</div>
+
+		<div class='login_fields'>
+			<div class='login_fields__user'>
+				<div class='icon'>
+					<img src='./img/user_icon_copy.png'>
+				</div>
+				<input placeholder='Username' type='text' id="userName">
+				<div class='validation'>
+					<img src='./img/tick.png'>
+				</div>
+				</input>
+			</div>
+
+			<div class='login_fields__password'>
+				<div class='icon'>
+					<img src='./img/lock_icon_copy.png'>
+				</div>
+				<input placeholder='Password' type='password' id='password'>
+				<div class='validation'>
+					<img src='./img/tick.png'>
+				</div>
+			</div>
+
+			<div class='login_fields__submit'>
+				<input type='submit' value='Log In'>
+				<div class='forgot'>
+					<a href='#'>Forgotten password?</a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class='success'>
+			<h2>Authentication Success</h2>
+			<p>Welcome back</p>
+		</div>
+
+		<div class='disclaimer'>
+			<p id="err-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper laoreet placerat. Nullam semper
+				auctor justo, rutrum posuere odio vulputate nec.</p>
+		</div>
+
+	</div>
+
+
+	<div class='authent'>
+		<img src='img/puff.svg'>
+		<p>Authenticating...</p>
+	</div>
+
+	<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.js"></script>
+	<script src="http://cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.min.js"></script>
+	<script src="./js/api.js"></script>
+
+	<script>
+		$('input[type="submit"]').click(function () {
+
+			//校验输入
+			let userName = $('#userName').val();
+			let password = $('#password').val();
+			if (!userName) {
+				$('#userName').addClass('shake-rotate shake-constant');
+				setTimeout(() => {
+					$('#userName').removeClass('shake-rotate shake-constant');
+				}, 300);
+				return;
+			}
+			if (!password) {
+				$('#password').addClass('shake-rotate shake-constant');
+				setTimeout(() => {
+					$('#password').removeClass('shake-rotate shake-constant');
+				}, 300);
+				return;
+			}
+
+			//显示authentication弹窗
+			$('.login').addClass('test');
+			setTimeout(function () {
+				$('.login').addClass('movetoleft');
+			}, 300);
+			setTimeout(function () {
+				$('.authent').show().animate({ right: -320 }, {
+					easing: 'easeOutQuint',
+					duration: 600,
+					queue: false
+				});
+				$('.authent').animate({ opacity: 1 }, {
+					duration: 200,
+					queue: false
+				}).addClass('visible');
+			}, 500);
+
+			//登录
+			login(userName, '', password, (data) => {
+				let code = data.code;
+				if (code !== 0) {
+					console.log(data);
+					setTimeout(function () {
+						$('.authent').show().animate({ right: 90 }, {
+							easing: 'easeOutQuint',
+							duration: 600,
+							queue: false
+						});
+						$('.authent').animate({ opacity: 0 }, {
+							duration: 200,
+							queue: false
+						}).addClass('visible').css('display', 'none');
+						$('.login').removeClass('movetoleft');
+					}, 1300);
+					setTimeout(function () {
+						$('.login').removeClass('test');
+					}, 1300);
+					document.getElementById('err-des').innerHTML = data.message;
+					return;
+				}
+
+				setTimeout(function () {
+					$('.authent').show().animate({ right: 90 }, {
+						easing: 'easeOutQuint',
+						duration: 600,
+						queue: false
+					});
+					$('.authent').animate({ opacity: 0 }, {
+						duration: 200,
+						queue: false
+					}).addClass('visible');
+					$('.login').removeClass('movetoleft');
+				}, 1300);
+				setTimeout(function () {
+					$('.login').removeClass('test');
+					$('.login div').fadeOut(123);
+				}, 1300);
+				setTimeout(function () {
+					$('.success').fadeIn();
+				}, 1300);
+				setTimeout(()=>{
+					window.location.href="./main.html";
+				}, 2500);
+				
+			});
+
+		});
+
+		$('input[type="text"],input[type="password"]').focus(function () {
+			$(this).prev().animate({ 'opacity': '1' }, 200);
+		});
+
+		$('input[type="text"],input[type="password"]').blur(function () {
+			$(this).prev().animate({ 'opacity': '.3' }, 200);
+		});
+
+		$('input[type="text"],input[type="password"]').keyup(function () {
+			if (!$(this).val() == '') {
+				$(this).next().animate({
+					'opacity': '1',
+					'right': '30'
+				}, 200);
+			} else {
+				$(this).next().animate({
+					'opacity': '0',
+					'right': '20'
+				}, 200);
+			}
+		});
+	</script>
+
+</body>
+
+</html>
