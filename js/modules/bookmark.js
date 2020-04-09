@@ -1,5 +1,4 @@
-function initBookmarkData(categoryId, isRefresh) {
-    let key = $('#search-text').val();
+function initBookmarkData(categoryId, isRefresh, key) {
 
     if (!categoryId) {
         let ul = document.getElementById('menu').getElementsByTagName('ul');
@@ -141,6 +140,10 @@ function setBookmarkPreviewData(bookmarkId) {
         tag.setAttribute('href', '#');
         tag.setAttribute('tagId', tagInfo.id);
         tag.innerHTML = tagInfo.name;
+        tag.addEventListener("click", ()=>{
+            key = tag.innerText;
+            initBookmarkData(undefined, true, key);
+        });
         previewTagWrapper.appendChild(tag);
     }
 }

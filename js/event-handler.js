@@ -224,5 +224,5 @@ $('#search').click(() => {
         //如果没有输入任何搜索条件，则回到原来选择的分类下
         selectedCategoryId = CACHE.currentCategoryId;
     }
-    initBookmarkData(selectedCategoryId, true);
+    initBookmarkData(selectedCategoryId, true, key);
 });
