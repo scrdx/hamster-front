@@ -5,7 +5,6 @@ function initBookmarkData(categoryId, isRefresh) {
         let ul = document.getElementById('menu').getElementsByTagName('ul');
         let root = ul[0];
         categoryId = root.getAttribute('id');
-        console.log(`root categoryId :${categoryId}`);
     }
 
     getBookmark(key, categoryId, (data) => {

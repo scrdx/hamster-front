@@ -58,7 +58,7 @@
       $(this.element).children("ul").find("li").bind(defaults.event, function (e) {
         e.stopPropagation();
         let categoryId = this.getAttribute('id');
-
+        CACHE.currentCategoryId = categoryId;
         //取消别的列表项的选中
         $('#category').find('.active').removeClass('active');
         //设置选中

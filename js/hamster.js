@@ -198,7 +198,9 @@ function initKeyEvent() {
             $('.main').terseBanner('prev');
         } else if (event.keyCode === 39) {
             $('.main').terseBanner('next');
-        };
+        } else if (event.keyCode === 13 && document.activeElement.id === 'search-text') {
+            $('#search').click();
+        }
     }
     $(document).on('keydown', f);
 }

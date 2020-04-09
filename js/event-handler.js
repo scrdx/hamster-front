@@ -60,7 +60,7 @@ $('#bookmark-form-ok').click(() => {
                 closeOnClick: true,
                 delayClose: 100
             }).open();
-    
+
             //刷新书签面板
             initBookmarkData(undefined, true);
             bookmarkAddWindow.close();
@@ -87,7 +87,7 @@ $('#bookmark-form-ok').click(() => {
                 closeOnClick: true,
                 delayClose: 100
             }).open();
-    
+
             //刷新书签面板
             initBookmarkData(undefined, true);
             bookmarkAddWindow.close();
@@ -204,7 +204,7 @@ $('#avatar-form-ok').click(() => {
         //清除对话框数据
         clear();
     });
-    
+
 });
 
 $('#avatar-form-cancel').click(() => {
@@ -214,4 +214,15 @@ $('#avatar-form-cancel').click(() => {
 
 $('#avatar-form-empty').click(() => {
     clear();
+});
+
+//搜索
+$('#search').click(() => {
+    let key = $('#search-text').val();
+    let selectedCategoryId;
+    if (!key) {
+        //如果没有输入任何搜索条件，则回到原来选择的分类下
+        selectedCategoryId = CACHE.currentCategoryId;
+    }
+    initBookmarkData(selectedCategoryId, true);
 });
