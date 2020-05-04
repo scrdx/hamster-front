@@ -1,7 +1,4 @@
 //退出登录
-function logout() {
-    alert("logout");
-}
 $('#logout').click(function () {
     var categoryAddPanel = new jBox('Confirm', {
         title: '退出登录',
@@ -11,7 +8,9 @@ $('#logout').click(function () {
         content: '确认退出吗?',
         closeOnConfirm: false,
         confirm: function () {
-            logout();
+            logout((data)=>{
+                window.location.href="login.html";
+            });
             categoryAddPanel.close();
         }
     }).open();

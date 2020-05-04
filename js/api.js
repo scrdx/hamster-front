@@ -7,7 +7,7 @@ var host = "127.0.0.1:8080";
  * @param {string} nickname 昵称
  * @param {string} password 密码
  */
-function login(userCode, nickname, password, callback) {
+function login(userCode, nickname, password,rememberMe, callback) {
     let url = `http://${host}/hamster/user/login`;
     $.ajax({
         type: 'POST',
@@ -20,11 +20,27 @@ function login(userCode, nickname, password, callback) {
         data: JSON.stringify({
             "userCode": userCode,
             "nickname": nickname,
-            "password": password
+            "password": password,
+            "rememberMe": rememberMe
         })
     }).done((data) => {
         callback(data);
     }).fail((xhr, status) => {
+    });
+}
+
+function logout(callback) {
+    let url = `http://${host}/hamster/user/logout`;
+    $.ajax({
+        type: 'POST',
+        url: url,
+        contentType: 'application/json',
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        }
+    }).done((data)=>{
+        callback(data);
     });
 }
 

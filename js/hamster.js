@@ -180,7 +180,6 @@ function initCategorySelector() {
 
 function setUserInfo() {
     getUserInfo((data)=>{
-        console.log(data);
         if (!data || data.code !== 0) {
             //获取用户信息失败,返回登录页面
             window.location.href = 'login.html';

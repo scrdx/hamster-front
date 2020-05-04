@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+	<canvas id="background"></canvas>
 	<div class='login'>
 		<div class='login_title'>
 			<span>Hamster Login</span>
@@ -39,7 +39,7 @@
 			<div class='login_fields__submit'>
 				<input type='submit' value='Log In'>
 				<div class='forgot'>
-					<a href='#'>Forgotten password?</a>
+					<label><input type="checkbox" name="remember-me" id="remember" value="true" /> Remember Me.</label>
 				</div>
 			</div>
 
@@ -51,8 +51,7 @@
 		</div>
 
 		<div class='disclaimer'>
-			<p id="err-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper laoreet placerat. Nullam semper
-				auctor justo, rutrum posuere odio vulputate nec.</p>
+			<p id="err-des"></p>
 		</div>
 
 	</div>
@@ -67,12 +66,18 @@
 	<script src="http://cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.min.js"></script>
 	<script src="./js/api.js"></script>
 
+	<script src="./js/login-background.js"></script>
+	<script>
+		//焦点放在输入框
+		document.getElementById('userName').focus();
+	</script>
 	<script>
 		$('input[type="submit"]').click(function () {
-
 			//校验输入
 			let userName = $('#userName').val();
 			let password = $('#password').val();
+			let rememberMe = $('#remember').prop('checked');
+			console.log(rememberMe);
 			if (!userName) {
 				$('#userName').addClass('shake-rotate shake-constant');
 				setTimeout(() => {
@@ -106,10 +111,9 @@
 			}, 500);
 
 			//登录
-			login(userName, '', password, (data) => {
+			login(userName, '', password, rememberMe, (data) => {
 				let code = data.code;
 				if (code !== 0) {
-					console.log(data);
 					setTimeout(function () {
 						$('.authent').show().animate({ right: 90 }, {
 							easing: 'easeOutQuint',
@@ -148,10 +152,10 @@
 				setTimeout(function () {
 					$('.success').fadeIn();
 				}, 1300);
-				setTimeout(()=>{
-					window.location.href="./main.html";
+				setTimeout(() => {
+					window.location.href = "./main.html";
 				}, 2500);
-				
+
 			});
 
 		});
