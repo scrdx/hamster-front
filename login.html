@@ -78,11 +78,10 @@
 			let username = $('#userName').val();
 			let password = $('#password').val();
 			let rememberMe = $('#remember').prop('checked');
-			console.log(rememberMe);
 			if (!username) {
-				$('#username').addClass('shake-rotate shake-constant');
+				$('#userName').addClass('shake-rotate shake-constant');
 				setTimeout(() => {
-					$('#username').removeClass('shake-rotate shake-constant');
+					$('#userName').removeClass('shake-rotate shake-constant');
 				}, 300);
 				return;
 			}
