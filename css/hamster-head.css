@@ -4,7 +4,7 @@
     min-height: 100px;
 }
 
-#nav-first {
+.nav-first {
     height: 20%;
     box-shadow: 3px 3px 3px rgb(220, 220, 220);
     background-color: #FFFFFF;   
@@ -14,7 +14,7 @@
     height: 10%;
 }
 
-#nav-second {
+.nav-second {
     height: 60%;
     max-height: 60px;
     padding-left: 10%;

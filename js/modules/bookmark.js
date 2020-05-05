@@ -60,10 +60,10 @@ function initBookmarkData(categoryId, isRefresh, key) {
         }
         //新添加一个书签，暂时重新建立整个书签面板
         if (isRefresh) {
-            let main = document.getElementById('bookmark-main');
-            $('#bookmark-main').remove();
+            let main = document.getElementById('bookmarkMain');
+            $('#bookmarkMain').remove();
             main = document.createElement('div');
-            main.setAttribute('id', 'bookmark-main');
+            main.setAttribute('id', 'bookmarkMain');
             main.setAttribute('class', 'main');
             main.appendChild(ul);
             document.getElementById('body').appendChild(main);
@@ -71,7 +71,7 @@ function initBookmarkData(categoryId, isRefresh, key) {
             //绑定右键菜单
             initContextMenu();
         } else {
-            document.getElementById('bookmark-main').appendChild(ul);
+            document.getElementById('bookmarkMain').appendChild(ul);
             //绑定右键菜单
             initContextMenu();
         }
@@ -112,23 +112,23 @@ function setBookmarkPreviewData(bookmarkId) {
     let bookmark = CACHE.bookmarkMap.get(bookmarkId);
 
     //图标
-    let previewImg = document.getElementById('preview-img');
+    let previewImg = document.getElementById('previewImg');
     previewImg.style.backgroundImage = `url(${bookmark.iconUrl})`;
 
     //标题
-    let previewTitle = document.getElementById('preview-title');
+    let previewTitle = document.getElementById('previewTitle');
     previewTitle.innerHTML = bookmark.title;
 
     //描述
-    let previewDescription = document.getElementById('preview-description');
+    let previewDescription = document.getElementById('previewDescription');
     previewDescription.innerHTML = bookmark.description;
 
     //分类
-    let previewCategory = document.getElementById('preview-category');
+    let previewCategory = document.getElementById('previewCategory');
     previewCategory.innerHTML = `<span class="preview-des">分类：</span>${bookmark.categoryName}`;
     
     //标签
-    let previewTagWrapper = document.getElementById('preview-tag-wrapper');
+    let previewTagWrapper = document.getElementById('previewTagWrapper');
     //移除原来的标签
     previewTagWrapper.innerHTML = '<span class="preview-des">标签：</span>';
     if (!bookmark.tagInfoList) {

@@ -6,21 +6,7 @@ body {
   margin: 0;
   overflow: hidden;
   font-family: 'Gudea', sans-serif;
-  /* background: #EA5C54; */
-  /* Old browsers */
-  /* FF3.6+ */
-  /* background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #EA5C54), color-stop(100%, #bb6dec)); */
-  /* Chrome,Safari4+ */
-  /* background: -webkit-linear-gradient(-45deg, #EA5C54 0%, #bb6dec 100%); */
-  /* Chrome10+,Safari5.1+ */
-  /* Opera 11.10+ */
-  /* IE10+ */
-  /* background: -webkit-linear-gradient(315deg, #EA5C54 0%, #bb6dec 100%); */
-  /* background: linear-gradient(135deg, #EA5C54 0%, #bb6dec 100%); */
-  /* W3C */
-  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EA5C54 ', endColorstr='#bb6dec',GradientType=1 ); */
-  /* IE6-9 fallback on horizontal gradient */
-  background-image:url('../img/login_background.jpg');
+  /* background-image:url('../img/login_background.jpg'); */
   background-size: 100%;
 }
 body ::-webkit-input-placeholder {
@@ -77,7 +63,7 @@ body .movetoleft {
   /* left: -320px !important; */
   left: 40% !important;
 }
-body .test {
+body .leanback {
   box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
   pointer-events: none;
   top: -100px !important;
@@ -146,28 +132,28 @@ body .login .disclaimer {
 .disclaimer p {
   color: #00b5fb;
 }
-body .login_title {
+body .login-title {
   color: #afb1be;
   height: 60px;
   text-align: left;
   font-size: 16px;
 }
-body .login_fields {
+body .login-fields {
   height: 208px;
   position: absolute;
   left: 0;
 }
-body .login_fields .icon {
+body .login-fields .icon {
   position: absolute;
   z-index: 1;
   left: 36px;
   top: 8px;
   opacity: .5;
 }
-body .login_fields input[type='password'] {
+body .login-fields input[type='password'] {
   color: #19a9d5 !important;
 }
-body .login_fields input[type='text'], body .login_fields input[type='password'] {
+body .login-fields input[type='text'], body .login-fields input[type='password'] {
   color: #afb1be;
   width: 190px;
   margin-top: -2px;
@@ -182,10 +168,10 @@ body .login_fields input[type='text'], body .login_fields input[type='password']
   font-family: 'Gudea', sans-serif;
   box-shadow: none;
 }
-body .login_fields__user, body .login_fields__password {
+body .login-fields-user, body .login-fields-password {
   position: relative;
 }
-body .login_fields__submit {
+body .login-fields-submit {
   position: relative;
   top: 35px;
   left: 0;
@@ -193,17 +179,17 @@ body .login_fields__submit {
   right: 0;
   margin: auto;
 }
-body .login_fields__submit .forgot {
+body .login-fields-submit .forgot {
   color: #afb1be;
   float: right;
   font-size: 10px;
   margin-top: 11px;
   text-decoration: none;
 }
-body .login_fields__submit .forgot a {
+body .login-fields-submit .forgot a {
   color: #afb1be;
 }
-body .login_fields__submit input {
+body .login-fields-submit input {
   border-radius: 3px;
   background: transparent;
   padding: 10px 50px;
@@ -216,11 +202,11 @@ body .login_fields__submit input {
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
 }
-body .login_fields__submit input:focus {
+body .login-fields-submit input:focus {
   box-shadow: none;
   outline: none;
 }
-body .login_fields__submit input:hover {
+body .login-fields-submit input:hover {
   color: white;
   background: #19a9d5;
   cursor: pointer;

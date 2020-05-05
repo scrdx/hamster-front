@@ -14,23 +14,22 @@ function isEmpty(obj) {
 
 function clear() {
     //书签对话框
-    $('#bookmark-form-url-text').val('');
-    $('#bookmark-form-title').val('');
-    $('#bookmark-form-description').val('');
+    $('#bookmarkFormUrlText').val('');
+    $('#bookmarkFormTitle').val('');
+    $('#bookmarkFormDescription').val('');
     comboTree.clearSelection();
-    $('#category-tree').val('');
-    let tags = $('#bookmark-form-tag').tagEditor('getTags')[0].tags;
-    for (i = 0; i < tags.length; i++) { $('#bookmark-form-tag').tagEditor('removeTag', tags[i]); }
-    // $('#bookmark-form-tag').tagEditor('getTags')
+    $('#categoryTree').val('');
+    let tags = $('#bookmarkFormTag').tagEditor('getTags')[0].tags;
+    for (i = 0; i < tags.length; i++) { $('#bookmarkFormTag').tagEditor('removeTag', tags[i]); }
 
     //分类添加对话框
-    $('#category-add-text').val('');
+    $('#categoryAddText').val('');
 
     //书签编辑框状态默认为添加状态
     CACHE.currentOperate = CONST.ADD;
 
     //用户配置弹窗信息
-    $('#user-config-form-nickname').val('');
+    $('#userConfigFormNickname').val('');
     if (configCropper) {
         configCropper.replace('./img/default_icon.png');
     }

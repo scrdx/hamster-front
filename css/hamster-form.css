@@ -22,12 +22,12 @@
     position: relative;
     width: 90%;
 }
-#bookmark-form-url-text {
+#bookmarkFormUrlText {
     float: left;
     width: 100%;
     height: 35px;
 }
-#bookmark-form-url-get {
+#bookmarkFormUrlGet {
     position: absolute;
     right: 0px;
     top: 0px;
@@ -40,14 +40,14 @@
     cursor: pointer;
     color: #dcf2f8;
 }
-#bookmark-form-url-get:hover {
+#bookmarkFormUrlGet:hover {
     background-color: #19a9d5;
 }
-#bookmark-form-url-get:active {
+#bookmarkFormUrlGet:active {
     border: none;
     box-shadow: 1px 2px 4px 0px rgba(0,0,0,.325) inset;
 }
-#bookmark-form-url-get::before {
+#bookmarkFormUrlGet::before {
     margin-right: 5px;
     content: "\f021";
     font-family: FontAwesome;
@@ -55,12 +55,12 @@
     color: #dcf2f8;
 }
 
-#bookmark-form-title {
+#bookmarkFormTitle {
     margin-top: 8px;
     width: 90%;
     height: 35px;
 }
-#bookmark-form-description {
+#bookmarkFormDescription {
     margin-top: 8px;
     float: left;
     width: 90%;
@@ -76,7 +76,7 @@
 /** 书签添加面板标签添加 **/
 .tag-editor {
     width: 90%;
-    border: 1px solid #23b7e5!important;
+    border: 1px solid #23b7e5 !important;
 }
 
 /** 横线 **/
@@ -95,7 +95,7 @@
 .icon-editor {
     float: left;
 }
-#icon-image {
+#iconImage {
     width: 200px;
     height: 200px;
 }
@@ -132,7 +132,7 @@
 }
 
 /** 书签编辑面板按钮 **/
-#button-group {
+.button-group {
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -195,7 +195,6 @@
     float: left;
     width: 180px;
     height: 100%;
-    background-image: url("../icon/pixiv.png");
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: contain;
@@ -262,7 +261,7 @@
     width: calc(90% - 200px);
     height: 305px;
 }
-#avatar-image{
+#avatarImage{
     width: 200px;
     height: 200px;
 }
@@ -282,7 +281,7 @@
     box-shadow: 1px 1px 6px rgb(83, 83, 231);
     box-shadow: 3px 0px 10px grey;
 }
-#user-config-form-nickname {
+#userConfigFormNickname {
     height: 30px;
     width: 300px;
     margin-top: 8px;

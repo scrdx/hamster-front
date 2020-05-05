@@ -42,7 +42,7 @@ function initBookmarkEditPanel() {
         overlay: false,
         isolateScroll: false,
         draggable: 'title',
-        attach: '#add-bookmark',
+        attach: '#addBookmark',
         title: '编辑书签',
         repositionOnOpen: false,
         repositionOnContent: false,
@@ -80,7 +80,7 @@ function initUserConfigPanel() {
         repositionOnContent: false,
         content: $('.user-config-panel'),
         onOpen: ()=>{
-            $('#user-config-form-nickname').val(CACHE.userInfo.nickname);
+            $('#userConfigFormNickname').val(CACHE.userInfo.nickname);
         }
     });
 }
@@ -90,7 +90,7 @@ function initUserConfigPanel() {
  * 初始化标签编辑框
  */
 function initTagEditor() {
-    $('#bookmark-form-tag').tagEditor({
+    $('#bookmarkFormTag').tagEditor({
         initialTags: [],
         placeholder: '在这里添加标签',
         maxLength: 20,
@@ -112,7 +112,7 @@ function initCropper() {
     if (!isFirstInitCropper) {
         return;
     }
-    var image = document.getElementById('icon-image');
+    var image = document.getElementById('iconImage');
     var options = {
         aspectRatio: 1 / 1,
         preview: '.icon-preview',
@@ -128,7 +128,7 @@ function initConfigCropper() {
     if (!isFirstOpenConfigPanel) {
         return;
     }
-    var image = document.getElementById('avatar-image');
+    var image = document.getElementById('avatarImage');
     var options = {
         aspectRatio: 1 / 1,
         preview: '.avatar-preview',
@@ -171,7 +171,7 @@ function initCategorySelector() {
             }
         };
         convertCategory(categorys, targetData);
-        comboTree = $('#category-tree').comboTree({
+        comboTree = $('#categoryTree').comboTree({
             source: targetData,
             isMultiple: false
         });
@@ -185,7 +185,7 @@ function setUserInfo() {
             window.location.href = 'login.html';
         }
         let userInfo = data.data;
-        document.getElementById('header-avatar').style.backgroundImage = `url(${userInfo.avatarUrl})`;
+        document.getElementById('headAvatar').style.backgroundImage = `url(${userInfo.avatarUrl})`;
         CACHE.userInfo.userCode = userInfo.userCode;
         CACHE.userInfo.nickname = userInfo.nickname;
     });
@@ -197,7 +197,7 @@ function initKeyEvent() {
             $('.main').terseBanner('prev');
         } else if (event.keyCode === 39) {
             $('.main').terseBanner('next');
-        } else if (event.keyCode === 13 && document.activeElement.id === 'search-text') {
+        } else if (event.keyCode === 13 && document.activeElement.id === 'searchText') {
             $('#search').click();
         }
     }

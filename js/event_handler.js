@@ -16,13 +16,13 @@ $('#logout').click(function () {
     }).open();
 });
 
-$('#bookmark-form-ok').click(() => {
+$('#bookmarkFormOk').click(() => {
     let id = $('#bookmarkId').attr('bookmarkId');
-    let url = $('#bookmark-form-url-text').val();
-    let title = $('#bookmark-form-title').val();
-    let description = $('#bookmark-form-description').val();
+    let url = $('#bookmarkFormUrlText').val();
+    let title = $('#bookmarkFormTitle').val();
+    let description = $('#bookmarkFormDescription').val();
     let categoryId = comboTree.getSelectedItemsId();
-    let tags = $('#bookmark-form-tag').tagEditor('getTags')[0].tags;
+    let tags = $('#bookmarkFormTag').tagEditor('getTags')[0].tags;
     let cropData = cropper.getData();
     let param = {};
     param.id = id;
@@ -34,7 +34,7 @@ $('#bookmark-form-ok').click(() => {
         param.tags = tags.join(',');
     }
     param.cropParam = cropData;
-    let picData = document.getElementById('icon-image').getAttribute('src');
+    let picData = document.getElementById('iconImage').getAttribute('src');
     if (picData.indexOf('data:image') !== -1) {
         param.pic = picData;
     }
@@ -97,9 +97,9 @@ $('#bookmark-form-ok').click(() => {
 
 });
 
-$('#bookmark-form-upload').click(() => {
-    let fileInput = document.getElementById('icon-file');
-    $('#icon-file').click();
+$('#bookmarkFormUpload').click(() => {
+    let fileInput = document.getElementById('iconFile');
+    $('#iconFile').click();
     fileInput.addEventListener('change', () => {
         if (!fileInput.value) {
             return;
@@ -125,19 +125,19 @@ $('#bookmark-form-upload').click(() => {
     })
 });
 
-$('#bookmark-form-cancel').click(() => {
+$('#bookmarkFormCancel').click(() => {
     bookmarkAddWindow.close();
     clear();
 })
 
-$('#bookmark-form-empty').click(() => {
+$('#bookmarkFormEmpty').click(() => {
     clear();
 })
 
 //用户配置
-$('#avatar-form-upload').click(() => {
-    let fileInput = document.getElementById('avatar-file');
-    $('#avatar-file').click();
+$('#avatarFormUpload').click(() => {
+    let fileInput = document.getElementById('avatarFile');
+    $('#avatarFile').click();
     fileInput.addEventListener('change', () => {
         if (!fileInput.value) {
             return;
@@ -163,13 +163,13 @@ $('#avatar-form-upload').click(() => {
     })
 });
 
-$('#avatar-form-ok').click(() => {
-    let nickname = $('#user-config-form-nickname').val();
+$('#avatarFormOk').click(() => {
+    let nickname = $('#userConfigFormNickname').val();
     let cropData = configCropper.getData();
     let param = {};
     param.nickname = nickname;
     param.cropParam = cropData;
-    let picData = document.getElementById('avatar-image').getAttribute('src');
+    let picData = document.getElementById('avatarImage').getAttribute('src');
     if (picData.indexOf('data:image') !== -1) {
         param.avatarPic = picData;
     }
@@ -186,7 +186,7 @@ $('#avatar-form-ok').click(() => {
             return;
         }
         let userInfo = data.data;
-        document.getElementById('header-avatar').style.backgroundImage = `url(${userInfo.avatarUrl})`;
+        document.getElementById('headAvatar').style.backgroundImage = `url(${userInfo.avatarUrl})`;
         CACHE.userInfo.userCode = userInfo.userCode;
         CACHE.userInfo.nickname = userInfo.nickname;
         console.log(CACHE.userInfo.nickname);
@@ -206,18 +206,18 @@ $('#avatar-form-ok').click(() => {
 
 });
 
-$('#avatar-form-cancel').click(() => {
+$('#avatarFormCancel').click(() => {
     userConfigEditWindow.close();
     clear();
 });
 
-$('#avatar-form-empty').click(() => {
+$('#avatarFormEmpty').click(() => {
     clear();
 });
 
 //搜索
 $('#search').click(() => {
-    let key = $('#search-text').val();
+    let key = $('#searchText').val();
     let selectedCategoryId;
     if (!key) {
         //如果没有输入任何搜索条件，则回到原来选择的分类下

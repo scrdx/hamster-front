@@ -1,38 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="keywords" content="hamster,bookmark">
+    <meta name="robots" content="none">
+    <meta name="author" content="draqous">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
     <!--自定义样式-->
-    <link href="./css/hamster-head.css" rel="stylesheet">
-    <link href="./css/hamster-sidebar.css" rel="stylesheet">
-    <link href="./css/hamster-main.css" rel="stylesheet">
-    <link href="./css/hamster-form.css" rel="stylesheet">
-    <link href="./css/hamster-icon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/hamster-head.css">
+    <link rel="stylesheet" href="./css/hamster-main.css">
+    <link rel="stylesheet" href="./css/hamster-sidebar.css">
+    <link rel="stylesheet" href="./css/hamster-form.css">
+    <link rel="stylesheet" href="./css/hamster-icon.css">
     <!--组件样式-->
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="./css/plugins/jBox.all.min.css" rel="stylesheet">
-    <link href="./css/plugins/jquery-accordion-menu-multilevel.css" rel="stylesheet">
-    <link href="./css/plugins/jquery.tag-editor.css" rel="stylesheet">
-    <link href="./css/plugins/cropper.min.css" rel="stylesheet">
-    <link href="./css/plugins/combo-tree.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/plugins/jBox.all.min.css">
+    <link rel="stylesheet" href="./css/plugins/jquery-accordion-menu-multilevel.css">
+    <link rel="stylesheet" href="./css/plugins/jquery.tag-editor.css">
+    <link rel="stylesheet" href="./css/plugins/combo-tree.css">
+    <link rel="stylesheet" href="./css/plugins/cropper.min.css">
 </head>
 
 <body>
     <!-- head -->
     <div class="head">
-        <div id="nav-first">
+        <div class="nav-first">
         </div>
         <div class="nav-padding"></div>
-        <div id="nav-second">
+        <div class="nav-second">
             <div class="nav-button">
-                <a id="add-bookmark" href="#" onclick="initCropper()">添加</a>
+                <a id="addBookmark" href="#" onclick="initCropper()">添加</a>
             </div>
             <div class="nav-button">
                 <a href="#">标签</a>
             </div>
-            <div class="avatar" id="header-avatar"> </div>
+            <div class="avatar" id="headAvatar"> </div>
             <div class="profile-menu">
                 <ul>
                     <li><a href="#">信息</a></li>
@@ -41,7 +45,7 @@
                 </ul>
             </div>
             <div class="search-container">
-                <input id="search-text" class="search-input hamster-input" type="text" placeholder="标题/标签" />
+                <input class="search-input hamster-input" id="searchText" type="text" placeholder="标题/标签">
                 <button class="search-button" id="search"></button>
             </div>
         </div>
@@ -51,9 +55,9 @@
     <!-- body start -->
     <div id="body" class="body">
         <!-- sidebar start -->
-        <div id="category" class="sidebar">
-            <nav id="menu_nav">
-                <div id="menu" class="menu white">
+        <div class="sidebar" id="category">
+            <nav class="category-nav">
+                <div class="menu white" id="menu">
                     <ul>
 
                     </ul>
@@ -62,76 +66,79 @@
         </div>
         <!-- sidebar end -->
         <!--bookmark icon panel start-->
-        <div id="bookmark-main" class="main">
+        <div class="main" id="bookmarkMain">
         </div>
         <!-- bookmark icon panel end -->
-
     </div>
     <!-- body end-->
 
-    <!-- bookmark add window-->
+    <!-- foot start-->
+    <div class="footer"></div>
+    <!-- foot end-->
+
+    <!-- bookmark edit panel-->
     <div class="bookmark-edit-panel">
         <div class="bookmark-edit-form">
-            <input type="hidden" id="bookmarkId" />
+            <input type="hidden" id="bookmarkId">
             <div class="bookmark-form-url">
-                <input type="text" name="url" class="hamster-input" id="bookmark-form-url-text" placeholder="URL">
-                <button id="bookmark-form-url-get">GET</button>
+                <input type="text" class="hamster-input" id="bookmarkFormUrlText" name="url" placeholder="URL">
+                <button id="bookmarkFormUrlGet">GET</button>
             </div>
-            <label><input type="text" name="title" class="hamster-input" id="bookmark-form-title"
+            <label><input type="text" class="hamster-input" id="bookmarkFormTitle" name="title"
                     placeholder="标题"></label><br>
 
-            <label><textarea name="describe" class="hamster-input" id="bookmark-form-description"
+            <label><textarea class="hamster-input" id="bookmarkFormDescription" name="describe"
                     placeholder="描述"></textarea></label><br>
 
             <div class="bookmark-form-category-tree">
-                <input type="text" id="category-tree" placeholder="分类" />
+                <input type="text" id="categoryTree" placeholder="分类">
             </div>
 
-            <textarea id="bookmark-form-tag"></textarea>
+            <textarea id="bookmarkFormTag"></textarea>
 
             <hr class="line">
 
-            <input type="file" id="icon-file" style="display:none" />
+            <input type="file" id="iconFile" style="display:none">
             <div class="icon-wrapper">
                 <div class="icon-editor">
-                    <img id="icon-image" src="./img/default_icon.png">
+                    <img id="iconImage" src="./img/default_icon.png">
                 </div>
                 <div class="bookmark-form-icon-preview">
                     <div class="icon-preview preview-sm"></div>
                     <div class="icon-preview preview-md"></div>
                 </div>
             </div>
-            <div id="button-group">
-                <button type="button" class="hamster-button form-upload" id="bookmark-form-upload">upload</button>
-                <button type="button" class="hamster-button form-ok" id="bookmark-form-ok">确定</button>
-                <button type="button" class="hamster-button form-cancel" id="bookmark-form-cancel">取消</button>
-                <button type="button" class="hamster-button form-empty" id="bookmark-form-empty">清空</button>
+            <div class="button-group">
+                <button type="button" class="hamster-button form-upload" id="bookmarkFormUpload">upload</button>
+                <button type="button" class="hamster-button form-ok" id="bookmarkFormOk">确定</button>
+                <button type="button" class="hamster-button form-cancel" id="bookmarkFormCancel">取消</button>
+                <button type="button" class="hamster-button form-empty" id="bookmarkFormEmpty">清空</button>
             </div>
         </div>
     </div>
-    <!-- bookmark add window end-->
+    <!-- bookmark edit panel end-->
 
     <!-- 用户配置界面 -->
     <div class="user-config-panel">
         <div class="user-config-form">
-            <input type="file" id="avatar-file" style="display:none" />
-            <label><input type="text" name="nickname" class="hamster-input" id="user-config-form-nickname"
+            <input type="file" id="avatarFile" style="display:none">
+            <label><input type="text" class="hamster-input" id="userConfigFormNickname" name="nickname"
                     placeholder="昵称"></label><br>
 
             <div class="icon-wrapper">
                 <div class="icon-editor">
-                    <img id="avatar-image" src="./img/default_icon.png">
+                    <img id="avatarImage" src="./img/default_icon.png">
                 </div>
                 <div class="user-config-form-icon-preview">
                     <div class="avatar-preview preview-md"></div>
                 </div>
             </div>
 
-            <div id="button-group">
-                <button type="button" class="hamster-button form-upload" id="avatar-form-upload">upload</button>
-                <button type="button" class="hamster-button form-ok" id="avatar-form-ok">确定</button>
-                <button type="button" class="hamster-button form-cancel" id="avatar-form-cancel">取消</button>
-                <button type="button" class="hamster-button form-empty" id="avatar-form-empty">清空</button>
+            <div class="button-group">
+                <button type="button" class="hamster-button form-upload" id="avatarFormUpload">upload</button>
+                <button type="button" class="hamster-button form-ok" id="avatarFormOk">确定</button>
+                <button type="button" class="hamster-button form-cancel" id="avatarFormCancel">取消</button>
+                <button type="button" class="hamster-button form-empty" id="avatarFormEmpty">清空</button>
             </div>
 
         </div>
@@ -139,29 +146,23 @@
 
     <!-- 添加分类弹窗 -->
     <div class="category-add-panel">
-        <input type="text" class="hamster-input category-add-text" id="category-add-text" placeholder="请输入分类名称">
+        <input type="text" class="hamster-input category-add-text" id="categoryAddText" placeholder="请输入分类名称">
     </div>
 
-    <div id="preview-wrapper">
-        <!-- bookmark preview-->
-        <div class="bookmark-preview" id="bookmark-preview">
-            <div class="preview-img" id="preview-img"></div>
-            <div class="preview-info" id="preview-info">
-                <div class="preview-title" id="preview-title" >AcFun弹幕视频网 - 认真你就输啦 (・ω・)ノ- ( ゜- ゜)つロ</div>
-                <div class="preview-description" id="preview-description">AcFun是一家弹幕视频网站，致力于为每一个人带来欢乐。</div>
-                <div class="preview-category" id="preview-category"><span class="preview-des">分类：</span>娱乐</div>
-                <div class="preview-tag-wrapper" id="preview-tag-wrapper"><span class="preview-des">标签：</span>
-                </div>
+    <!-- bookmark preview-->
+    <div class="bookmark-preview">
+        <div class="preview-img" id="previewImg"></div>
+        <div class="preview-info">
+            <div class="preview-title" id="previewTitle">AcFun弹幕视频网 - 认真你就输啦 (・ω・)ノ- ( ゜- ゜)つロ</div>
+            <div class="preview-description" id="previewDescription">AcFun是一家弹幕视频网站，致力于为每一个人带来欢乐。</div>
+            <div class="preview-category" id="previewCategory"><span class="preview-des">分类：</span>娱乐</div>
+            <div class="preview-tag-wrapper" id="previewTagWrapper"><span class="preview-des">标签：</span>
             </div>
         </div>
     </div>
 
-    <!-- foot start-->
-    <div class="foot"></div>
-    <!-- foot end-->
-
     <!-- Javascript -->
-    <!--加载JQuery插件-->
+    <!--JS插件-->
     <!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="./js/plugin/jBox.all.min.js"></script>
@@ -179,14 +180,14 @@
     <script src="./js/cache.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/api.js"></script>
-    <script src="./js/init-context-menu.js"></script>
-    <script src="./js/event-handler.js"></script>
+    <script src="./js/init_context_menu.js"></script>
+    <script src="./js/event_handler.js"></script>
     <script src="./js/modules/category.js"></script>
     <script src="./js/modules/bookmark.js"></script>
     <script src="./js/hamster.js"></script>
 
     <script>
-        function init() {
+        (() => {
             setUserInfo();
 
             initUserProfileMenu();
@@ -199,8 +200,7 @@
 
             //初始化数据
             initCategoryTree();
-        }
-        init();
+        })();
     </script>
 
 </body>

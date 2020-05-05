@@ -1,45 +1,47 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh-cn">
 
 <head>
-	<link href="http://cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="./css/login.css">
-	<link href="./css/csshake.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="http://cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.min.css">
+	<link rel="stylesheet" href="./css/login.css">
+	<link rel="stylesheet" href="./css/csshake.css">
 </head>
 
 <body>
 	<canvas id="background"></canvas>
 	<div class='login'>
-		<div class='login_title'>
+		<div class='login-title'>
 			<span>Hamster Login</span>
 		</div>
 
-		<div class='login_fields'>
-			<div class='login_fields__user'>
+		<div class='login-fields'>
+			<div class='login-fields-user'>
 				<div class='icon'>
 					<img src='./img/user_icon_copy.png'>
 				</div>
-				<input placeholder='Username' type='text' id="userName">
+				<!--账户名使用userName而不使用username是为了不让浏览器弹出账号选择框-->
+				<input type='text' id="userName" placeholder='Username'>
 				<div class='validation'>
 					<img src='./img/tick.png'>
 				</div>
 				</input>
 			</div>
 
-			<div class='login_fields__password'>
+			<div class='login-fields-password'>
 				<div class='icon'>
 					<img src='./img/lock_icon_copy.png'>
 				</div>
-				<input placeholder='Password' type='password' id='password'>
+				<input type='password' id='password' placeholder='Password'>
 				<div class='validation'>
 					<img src='./img/tick.png'>
 				</div>
 			</div>
 
-			<div class='login_fields__submit'>
+			<div class='login-fields-submit'>
 				<input type='submit' value='Log In'>
 				<div class='forgot'>
-					<label><input type="checkbox" name="remember-me" id="remember" value="true" /> Remember Me.</label>
+					<label><input type="checkbox" id="remember" name="remember-me" value="true" > Remember Me.</label>
 				</div>
 			</div>
 
@@ -51,11 +53,10 @@
 		</div>
 
 		<div class='disclaimer'>
-			<p id="err-des"></p>
+			<p id="errDescription"></p>
 		</div>
 
 	</div>
-
 
 	<div class='authent'>
 		<img src='img/puff.svg'>
@@ -65,23 +66,23 @@
 	<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.js"></script>
 	<script src="http://cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.min.js"></script>
 	<script src="./js/api.js"></script>
+	<script src="./js/login_background.js"></script>
 
-	<script src="./js/login-background.js"></script>
 	<script>
-		//焦点放在输入框
+		//进入页面时,使焦点位于输入框
 		document.getElementById('userName').focus();
 	</script>
 	<script>
 		$('input[type="submit"]').click(function () {
 			//校验输入
-			let userName = $('#userName').val();
+			let username = $('#userName').val();
 			let password = $('#password').val();
 			let rememberMe = $('#remember').prop('checked');
 			console.log(rememberMe);
-			if (!userName) {
-				$('#userName').addClass('shake-rotate shake-constant');
+			if (!username) {
+				$('#username').addClass('shake-rotate shake-constant');
 				setTimeout(() => {
-					$('#userName').removeClass('shake-rotate shake-constant');
+					$('#username').removeClass('shake-rotate shake-constant');
 				}, 300);
 				return;
 			}
@@ -94,7 +95,7 @@
 			}
 
 			//显示authentication弹窗
-			$('.login').addClass('test');
+			$('.login').addClass('leanback');//使面板后仰(lean back)
 			setTimeout(function () {
 				$('.login').addClass('movetoleft');
 			}, 300);
@@ -111,7 +112,7 @@
 			}, 500);
 
 			//登录
-			login(userName, '', password, rememberMe, (data) => {
+			login(username, '', password, rememberMe, (data) => {
 				let code = data.code;
 				if (code !== 0) {
 					setTimeout(function () {
@@ -127,9 +128,9 @@
 						$('.login').removeClass('movetoleft');
 					}, 1300);
 					setTimeout(function () {
-						$('.login').removeClass('test');
+						$('.login').removeClass('leanback');
 					}, 1300);
-					document.getElementById('err-des').innerHTML = data.message;
+					document.getElementById('errDescription').innerHTML = data.message;
 					return;
 				}
 
@@ -146,7 +147,7 @@
 					$('.login').removeClass('movetoleft');
 				}, 1300);
 				setTimeout(function () {
-					$('.login').removeClass('test');
+					$('.login').removeClass('leanback');
 					$('.login div').fadeOut(123);
 				}, 1300);
 				setTimeout(function () {
