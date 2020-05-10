@@ -24,6 +24,7 @@ function initContextMenu() {
         callback: function (name) {
             let icon = this;
             let bookmarkId = icon.getAttribute('id');
+            bookmarkId = bookmarkId.substring(bookmarkId.indexOf('-') + 1);
             switch (name) {
                 case 'modify':
                     //设置编辑框的值
