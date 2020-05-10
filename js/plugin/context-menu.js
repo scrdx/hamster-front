@@ -54,7 +54,7 @@
         private_active_panel = null,
         private_body = $('body'),
         menu_tpl = '<div class="panel_menu panel_mark"><ul class="pa_me_list">{-content-}</ul></div>',
-        style_tpl = '<style type="text/css">' + ".panel_menu{\n\tposition: absolute;\n\tz-index :10000;\n\twidth:180px;\n\tbackground:#fff;\n\tbox-shadow: 0px 1px 4px 0px #333333;\n\tborder-radius:1px;\n}\n.pa_me_list{\n\tpadding:5px 0px;\n\tmargin:0px;\n}\n.pa_me_list span,\n.pa_me_list a{\n\tline-height:24px;\n\tdisplay:block;\n\tfont-size:13px;\n\ttext-indent:2em;\n\tpadding: 2px 5px;\n\ttext-decoration:none;\n}\n.pa_me_list span{\n\tcursor: default;\n\tcolor:#aaa;\n}\n.pa_me_list a{\n\tcolor:#444;\n}\n.pa_me_list a:hover{\n\tcolor:#000;\n\tbackground:#eee;\n}" + '</style>';
+        style_tpl = '<style type="text/css">' + ".panel_menu{\n\tposition: absolute;\n\tz-index :10000;\n\twidth:180px;\n\tbackground:#fff;\n\tbox-shadow: 0px 0px 3px 0px rgba(90, 90, 90, 0.5);\n\tborder-radius:2px;\n}\n.pa_me_list{\n\tpadding:0px 0px;\n\tmargin:0px;\n}\n.pa_me_list span,\n.pa_me_list a{\n\tborder-bottom:solid 1px #eee;\n\tline-height:30px;\n\tdisplay:block;\n\tfont-size:13px;\n\ttext-indent:2em;\n\tpadding: 2px 5px;\n\ttext-decoration:none;\n}\n.pa_me_list span{\n\tcursor: default;\n\tcolor:#aaa;\n}\n.pa_me_list a{\n\tcolor:#444;\n}\n.pa_me_list a:hover{\n\tcolor:#000;\n\tbackground:#eee;\n}" + '</style>';
 
     function reCountSize() {
         private_winW = private_win.width();
