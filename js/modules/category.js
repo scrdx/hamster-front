@@ -11,8 +11,14 @@ function initCategoryTree() {
             return;
         }
         data = data.data;
+        if (!data) {
+            return;
+        }
         if (data.id) {
             root.setAttribute('id', data.id);
+            if (!data.children) {
+                return;
+            }
             for (let children of data.children) {
                 let li = document.createElement('li');
                 li.setAttribute('id', children.id);
