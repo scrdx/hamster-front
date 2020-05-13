@@ -17,7 +17,7 @@ function initCategoryTree() {
         if (data.id) {
             root.setAttribute('id', data.id);
             if (!data.children) {
-                return;
+                data.children = [];
             }
             for (let children of data.children) {
                 let li = document.createElement('li');

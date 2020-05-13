@@ -157,7 +157,7 @@ function initCategorySelector() {
         }
         let categorys = data.data.children;
         if (!categorys) {
-            return;
+            categorys = [];
         }
         let targetData = [];
         let convertCategory = (arr, subs) => {
