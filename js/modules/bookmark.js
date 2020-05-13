@@ -27,6 +27,13 @@ function initBookmarkData(categoryId, isRefresh, key) {
         let li;
         let bookmarkWrapper;
 
+        if (!bookmarkArray || bookmarkArray.length === 0) {
+            li = document.createElement('li');
+            bookmarkWrapper = document.createElement('div');
+            bookmarkWrapper.setAttribute('class', 'bookmark-wrapper');
+            li.appendChild(bookmarkWrapper);
+            ul.appendChild(li);
+        }
         for (let bookmark of bookmarkArray) {
             //放入缓存
             CACHE.bookmarkMap.set('bookmark-' + bookmark.id, bookmark);
