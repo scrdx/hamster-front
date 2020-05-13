@@ -63,9 +63,6 @@
         $('#category').find('.active').removeClass('active');
         //设置选中
         this.setAttribute('class', 'active');
-
-
-        console.log(`点击分类项:id:${categoryId}`);
         initBookmarkData(categoryId, true);
       });
     },

@@ -69,7 +69,6 @@ function initContextMenu() {
             }
         },
         callbefore: function () {
-            console.log('you have panel [ ', this, ']');
         }
     });
 
@@ -165,7 +164,6 @@ function initContextMenu() {
                 case 'delete':
                     let submenu = category.getElementsByClassName('submenu');
                     let id = category.getAttribute('id');
-                    console.log(id);
                     if (submenu.length > 0) {
                         new jBox('Notice', {
                             content: '该分类下有子分类，无法删除!',
@@ -216,7 +214,6 @@ function initContextMenu() {
             }
         },
         callbefore: function () {
-            // console.log('you have panel [ ', this, ']');
         }
     });
 
@@ -272,7 +269,6 @@ function initContextMenu() {
             }).open();
         },
         callbefore: function () {
-            // console.log('you have panel [ ', this, ']');
         }
     });
 }

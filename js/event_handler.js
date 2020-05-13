@@ -105,7 +105,6 @@ $('#bookmarkFormUpload').click(() => {
             return;
         }
         let file = fileInput.files[0];
-        console.log(file.name);
         if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
             new jBox('Notice', {
                 content: '请选择图片文件!',
@@ -143,7 +142,6 @@ $('#avatarFormUpload').click(() => {
             return;
         }
         let file = fileInput.files[0];
-        console.log(file.name);
         if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
             new jBox('Notice', {
                 content: '请选择图片文件!',
@@ -189,7 +187,6 @@ $('#avatarFormOk').click(() => {
         document.getElementById('headAvatar').style.backgroundImage = `url(${userInfo.avatarUrl})`;
         CACHE.userInfo.userCode = userInfo.userCode;
         CACHE.userInfo.nickname = userInfo.nickname;
-        console.log(CACHE.userInfo.nickname);
         new jBox('Notice', {
             content: '编辑成功',
             color: 'green',

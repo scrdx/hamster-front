@@ -12,7 +12,6 @@ function initUserProfileMenu() {
         $('.profile-menu').fadeToggle('fast');
     });
     $(document).click(function (event) {
-        // console.log(event);
         var userPanel = document.getElementById('profile-menu');
         var userBox = document.getElementsByClassName('avatar');
         if (event.target == userBox[0] || isParent(event.target, userPanel)) {
