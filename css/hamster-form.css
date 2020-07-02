@@ -232,12 +232,14 @@
 }
 .preview-tag{
     display:inline-block;
+    min-width: 30px;
     line-height: 20px;
     border-radius: 4px;
     margin:2px 2px;
     padding: 2px;
     background-color: #87CEFA;
     font-size: 12px;
+    text-align: center;
     text-decoration: none;
     box-shadow: 1px 0px 2px 0px rgba(0,0,0,.325);
     color: black;
