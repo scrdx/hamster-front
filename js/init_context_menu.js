@@ -274,7 +274,7 @@ function initContextMenu() {
 }
 
 function setBookmarkEditPanelValue(bookmarkId) {
-    let bookmark = CACHE.bookmarkMap.get(bookmarkId);
+    let bookmark = CACHE.bookmarkMap.get('bookmark-' + bookmarkId);
     $('#bookmarkId').attr('bookmarkId', bookmark.id);
     $('#bookmarkFormUrlText').val(bookmark.url);
     $('#bookmarkFormTitle').val(bookmark.title);
