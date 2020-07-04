@@ -51,6 +51,7 @@ function initBookmarkData(categoryId, isRefresh, key) {
 
             let bookmarkHref = document.createElement('a');
             bookmarkHref.href = bookmark.url;
+            bookmarkHref.setAttribute('target', '_blank');
             let bookmarkIcon = document.createElement('div');
             bookmarkIcon.setAttribute('class', 'bookmark-icon');
             bookmarkIcon.style.backgroundImage = `url(${bookmark.iconUrl})`;
