@@ -222,3 +222,51 @@ $('#search').click(() => {
     }
     initBookmarkData(selectedCategoryId, true, key);
 });
+
+$('#bookmarkFormUrlGet').click(() => {
+    let address = $('#bookmarkFormUrlText').val();
+    getInfoByAddress(address, (data)=>{
+        let title;
+        let description;
+        let tags;
+        data = data.data;
+        if (data) {
+            title = data.title;
+            description = data.description;
+            tags = data.tags;
+        } else {
+            new jBox('Notice', {
+                content: '获取元信息失败',
+                color: 'red',
+                stack: true,
+                closeOnClick: true,
+                delayClose: 100
+            }).open();
+            return;
+        }
+        if (!(title || description || tags)) {
+            new jBox('Notice', {
+                content: '获取元信息失败',
+                color: 'red',
+                stack: true,
+                closeOnClick: true,
+                delayClose: 100
+            }).open();
+            return;
+        }
+
+        $('#bookmarkFormTitle').val(title);
+        $('#bookmarkFormDescription').val(description);
+        if (!tags) {
+            return;
+        }
+        let oldTags = $('#bookmarkFormTag').tagEditor('getTags')[0].tags;
+        if (oldTags) {
+            for (i = 0; i < oldTags.length; i++) { $('#bookmarkFormTag').tagEditor('removeTag', tags[i]); }
+        }
+
+        for (let tag of tags.split(' ')) {
+            $('#bookmarkFormTag').tagEditor('addTag', tag, true);
+        }
+    });
+});

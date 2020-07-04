@@ -248,3 +248,21 @@ function getBookmark(key, categoryId, callback) {
     })
 
 }
+
+function getInfoByAddress(address, callback) {
+    let url = `http://${host}/hamster/bookmark/getMetaInfoByUrl`;
+    $.ajax({
+        type: 'GET',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        data: {
+            url: address
+        }
+    }).done((data) => {
+        callback(data);
+    });
+}
