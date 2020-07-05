@@ -225,6 +225,15 @@ $('#search').click(() => {
 
 $('#bookmarkFormUrlGet').click(() => {
     let address = $('#bookmarkFormUrlText').val();
+    if(!address) {
+        new jBox('Notice', {
+            content: '获取元信息失败',
+            color: 'red',
+            stack: true,
+            closeOnClick: true,
+            delayClose: 100
+        }).open();
+    }
     getInfoByAddress(address, (data)=>{
         let title;
         let description;
