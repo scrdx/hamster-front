@@ -17,6 +17,8 @@ function clear() {
     $('#bookmarkFormUrlText').val('');
     $('#bookmarkFormTitle').val('');
     $('#bookmarkFormDescription').val('');
+    let fileInput = document.getElementById('iconFile');
+    fileInput.value = "";
     comboTree.clearSelection();
     $('#categoryTree').val('');
     let tags = $('#bookmarkFormTag').tagEditor('getTags')[0].tags;
