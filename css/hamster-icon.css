@@ -31,6 +31,9 @@
 /** 标题 **/
 .bookmark-title {
     text-align: center;
-    font-size: 14px;
-    text-shadow: -1px -1px 1px #fff, 1px 1px 1px #fff, 1px -1px 1px #fff, -1px 1px 1px #fff
+    font-size: 12px;
+    text-shadow: -1px -1px 1px #fff, 1px 1px 1px #fff, 1px -1px 1px #fff, -1px 1px 1px #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
