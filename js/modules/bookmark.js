@@ -83,11 +83,11 @@ function initBookmarkData(categoryId, isRefresh, key) {
             //绑定右键菜单
             initContextMenu();
         }
-
+        
         $('.main').terseBanner({
             auto: 0,
             animation: 'slide',
-            speed: 600
+            speed: 300
         });
         initBookmarkPreview();
     });
