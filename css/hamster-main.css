@@ -52,15 +52,30 @@ html,body {
 
 /** 主面板底部分页 **/
 .main .tb-btn {
-    bottom: 5px;
-    height: 20px;
-    width: 90%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    
+    bottom: 0;
+    height: 15px;
+    width: 100%;
+    margin-left:0!important;
+    left:0!important;
 }
 .main .tb-btn a {
     width: 100px;
-    height: 20px;
+    height: 15px;
     margin: 0;
     border-right: 1px solid #fff;
-    border-radius: 2px;
+    border-radius: 0;
     background: #666;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+/* 最后一个分页按钮不能有右边框，否则会有白边*/
+.main .tb-btn a:last-child {
+    border: 0;
 }
