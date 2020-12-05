@@ -11,6 +11,11 @@ html,body {
 .body {
     height: 84%;
     padding-top: 15px;
+    display:none;
+}
+.home {
+    height: 84%;
+    background-color: gray;
 }
 
 /** 图标主面板 **/

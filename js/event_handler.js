@@ -279,3 +279,15 @@ $('#bookmarkFormUrlGet').click(() => {
         }
     });
 });
+
+/* 导航栏按钮 */
+$('#showHome').click(()=>{
+    $('#home').show();
+    $('#body').hide();   
+});
+
+$('#showAllBookmark').click(()=>{
+    $('#home').hide();
+    $('#body').show();    
+});
+
