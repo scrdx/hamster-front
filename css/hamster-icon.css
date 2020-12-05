@@ -11,8 +11,8 @@
 .bookmark-icon {
     width: 60px;
     height: 60px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px rgb(220, 220, 220);
+    border-radius: 2px;
+    box-shadow: 0 0 5px 0 #000000b4;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -20,11 +20,11 @@
 .bookmark-icon:hover {
     /* 阴影向四周扩散 */
     /* box-shadow: 3px 3px 100px rgb(83, 83, 231); */
-    box-shadow: 3px 0px 10px grey;
-    margin-top: -2px;
+    box-shadow: 0 0 5px 0 #464646b3, 2px 0 5px 0 #464646b3;
+    margin-top: -1px;
 }
 .bookmark-icon:active {
-    box-shadow: 3px 0px 10px grey;
+    box-shadow: 0 0 5px 0 #464646b3;
     margin-top: 0px;
 }
 
