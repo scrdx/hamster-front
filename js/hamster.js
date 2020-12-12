@@ -239,8 +239,8 @@ function initOftenBookmarkPanel() {
             bookmarkItem.setAttribute('id', 'bookmark-' + bookmark.id);
 
             let bookmarkHref = document.createElement('a');
-            bookmarkHref.href = bookmark.url;
-            bookmarkHref.setAttribute('target', '_blank');
+            bookmarkHref.href = 'javascript:void(0)';
+            bookmarkHref.setAttribute('onclick',`visitUrl(${bookmark.id},'${bookmark.url}')`);
             let bookmarkIcon = document.createElement('div');
             bookmarkIcon.setAttribute('class', 'bookmark-icon');
             bookmarkIcon.style.backgroundImage = `url(${bookmark.iconUrl})`;
@@ -288,8 +288,8 @@ function initRandomBookmarkPanel(isRefresh) {
             bookmarkItem.setAttribute('id', 'bookmark-' + bookmark.id);
 
             let bookmarkHref = document.createElement('a');
-            bookmarkHref.href = bookmark.url;
-            bookmarkHref.setAttribute('target', '_blank');
+            bookmarkHref.href = 'javascript:void(0)';
+            bookmarkHref.setAttribute('onclick',`visitUrl(${bookmark.id},'${bookmark.url}')`);
             let bookmarkIcon = document.createElement('div');
             bookmarkIcon.setAttribute('class', 'bookmark-icon');
             bookmarkIcon.style.backgroundImage = `url(${bookmark.iconUrl})`;
