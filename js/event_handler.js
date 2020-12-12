@@ -331,3 +331,6 @@ function setButtonContent(content) {
 function setButtonUrl(url) {
     $('#searchBoxButton').attr('url', url);
 }
+$('#refreshButton').click((event)=>{
+    initRandomBookmarkPanel(true);
+});

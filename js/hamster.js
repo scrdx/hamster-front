@@ -260,7 +260,7 @@ function initOftenBookmarkPanel() {
 /**
  * 初始化随机书签面板
  */
-function initRandomBookmarkPanel() {
+function initRandomBookmarkPanel(isRefresh) {
     getRandomBookmarks(10, (data)=>{
         if (data.code !== 0) {
             console.log(`获取随机书签数据失败:code:${data.code}:message:${data.message}`);
@@ -278,6 +278,9 @@ function initRandomBookmarkPanel() {
 
         if (!bookmarkArray || bookmarkArray.length === 0) {
             return;
+        }
+        if (isRefresh) {
+            $(fixedBookmarkPanel).empty();
         }
         for (let bookmark of bookmarkArray) {
             let bookmarkItem = document.createElement('div');
