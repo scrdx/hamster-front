@@ -205,3 +205,100 @@ function initKeyEvent() {
     }
     $(document).on('keydown', f);
 }
+
+/**
+ * 初始化常用书签面板
+ */
+function initOftenBookmarkPanel() {
+    getOftenBookmarks(20, (data)=>{
+        if (data.code !== 0) {
+            console.log(`获取常用书签数据失败:code:${data.code}:message:${data.message}`);
+            new jBox('Notice', {
+                content: data.message,
+                color: 'red',
+                stack: true,
+                closeOnClick: true,
+                delayClose: 100
+            }).open();
+            return;
+        }
+        let bookmarkArray = data.data;
+        let fixedBookmarkPanel = document.getElementById('fixedBookmarkPanel');
+
+        if (!bookmarkArray || bookmarkArray.length === 0) {
+            return;
+        }
+        for (let bookmark of bookmarkArray) {
+            let bookmarkItem = document.createElement('div');
+            if (bookmark.isFixed && bookmark.isFixed === 1) {
+                bookmarkItem.setAttribute('class', 'bookmark fixed-bookmark');
+            } else {
+                bookmarkItem.setAttribute('class', 'bookmark');
+            }
+            
+            bookmarkItem.setAttribute('id', 'bookmark-' + bookmark.id);
+
+            let bookmarkHref = document.createElement('a');
+            bookmarkHref.href = bookmark.url;
+            bookmarkHref.setAttribute('target', '_blank');
+            let bookmarkIcon = document.createElement('div');
+            bookmarkIcon.setAttribute('class', 'bookmark-icon');
+            bookmarkIcon.style.backgroundImage = `url(${bookmark.iconUrl})`;
+            bookmarkHref.appendChild(bookmarkIcon);
+
+            let bookmarkTitle = document.createElement('div');
+            bookmarkTitle.setAttribute('class', 'bookmark-title');
+            bookmarkTitle.innerHTML = bookmark.title;
+
+            bookmarkItem.appendChild(bookmarkHref);
+            bookmarkItem.appendChild(bookmarkTitle);
+            fixedBookmarkPanel.appendChild(bookmarkItem);
+        }
+    });
+}
+
+/**
+ * 初始化随机书签面板
+ */
+function initRandomBookmarkPanel() {
+    getRandomBookmarks(10, (data)=>{
+        if (data.code !== 0) {
+            console.log(`获取随机书签数据失败:code:${data.code}:message:${data.message}`);
+            new jBox('Notice', {
+                content: data.message,
+                color: 'red',
+                stack: true,
+                closeOnClick: true,
+                delayClose: 100
+            }).open();
+            return;
+        }
+        let bookmarkArray = data.data;
+        let fixedBookmarkPanel = document.getElementById('randomBookmarkPanel');
+
+        if (!bookmarkArray || bookmarkArray.length === 0) {
+            return;
+        }
+        for (let bookmark of bookmarkArray) {
+            let bookmarkItem = document.createElement('div');
+            bookmarkItem.setAttribute('class', 'bookmark');
+            bookmarkItem.setAttribute('id', 'bookmark-' + bookmark.id);
+
+            let bookmarkHref = document.createElement('a');
+            bookmarkHref.href = bookmark.url;
+            bookmarkHref.setAttribute('target', '_blank');
+            let bookmarkIcon = document.createElement('div');
+            bookmarkIcon.setAttribute('class', 'bookmark-icon');
+            bookmarkIcon.style.backgroundImage = `url(${bookmark.iconUrl})`;
+            bookmarkHref.appendChild(bookmarkIcon);
+
+            let bookmarkTitle = document.createElement('div');
+            bookmarkTitle.setAttribute('class', 'bookmark-title');
+            bookmarkTitle.innerHTML = bookmark.title;
+
+            bookmarkItem.appendChild(bookmarkHref);
+            bookmarkItem.appendChild(bookmarkTitle);
+            fixedBookmarkPanel.appendChild(bookmarkItem);
+        }
+    });
+}

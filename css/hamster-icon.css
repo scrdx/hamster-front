@@ -4,6 +4,21 @@
     width: 60px;
     height: 60px;
     margin: 15px 30px;
+
+    position: relative;
+}
+/* 固定的书签图标右下角添加一个三角形 */
+.fixed-bookmark::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border: solid 10px;
+    border-color: transparent#fdda66 #fdda66 transparent;
+    border-bottom-right-radius: 2px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    box-shadow: 1px 1px 2px 0 black;
 }
 
 

@@ -246,7 +246,126 @@ function getBookmark(key, categoryId, callback) {
     }).done((data) => {
         callback(data);
     })
+}
 
+/**
+ * 获取常用书签
+ * 
+ * @param {number} size 数量
+ * @param {Funciton} callback 
+ */
+function getOftenBookmarks(size, callback) {
+    let url = `http://${host}/hamster/bookmark/getOften`;
+    $.ajax({
+        type: 'GET',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        data: {
+            size: size
+        }
+    }).done((data) => {
+        callback(data);
+    })
+}
+
+/**
+ * 获取随机书签
+ * 
+ * @param {number} size 数量
+ * @param {Funciton} callback 
+ */
+function getRandomBookmarks(size, callback) {
+    let url = `http://${host}/hamster/bookmark/getRandom`;
+    $.ajax({
+        type: 'GET',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        data: {
+            size: size
+        }
+    }).done((data) => {
+        callback(data);
+    })
+}
+
+/**
+ * 固定书签
+ * 
+ * @param {number} id 书签ID
+ * @param {Funciton} callback 
+ */
+function fix(id, callback) {
+    let url = `http://${host}/hamster/bookmark/fix`;
+    $.ajax({
+        type: 'PUT',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        data: {
+            id: id
+        }
+    }).done((data) => {
+        callback(data);
+    })
+}
+
+/**
+ * 取消固定
+ * 
+ * @param {number} id 书签ID
+ * @param {Funciton} callback 
+ */
+function unfix(id, callback) {
+    let url = `http://${host}/hamster/bookmark/unfix`;
+    $.ajax({
+        type: 'PUT',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        data: {
+            id: id
+        }
+    }).done((data) => {
+        callback(data);
+    })
+}
+
+/**
+ * 访问数+1
+ * 
+ * @param {number} id 书签ID
+ * @param {Funciton} callback 
+ */
+function increase(id, callback) {
+    let url = `http://${host}/hamster/bookmark/increase`;
+    $.ajax({
+        type: 'PUT',
+        url: url,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        data: {
+            id: id
+        }
+    }).done((data) => {
+        callback(data);
+    })
 }
 
 function getInfoByAddress(address, callback) {
@@ -266,3 +385,4 @@ function getInfoByAddress(address, callback) {
         callback(data);
     });
 }
+

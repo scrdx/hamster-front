@@ -11,6 +11,9 @@ function initContextMenu() {
             'modify': {
                 'txt': '修改'
             },
+            'fix': {
+                'txt': '固定'
+            },
             'delete': {
                 'txt': '删除'
             },
@@ -31,6 +34,28 @@ function initContextMenu() {
                     setBookmarkEditPanelValue(bookmarkId);
                     CACHE.currentOperate = CONST.UPDATE;
                     $('#addBookmark').click();
+                    break;
+                case 'fix':
+                    fix(bookmarkId,(data)=>{
+                        if (data.code !== 0) {
+                            new jBox('Notice', {
+                                content: '固定失败!',
+                                color: 'red',
+                                stack: true,
+                                closeOnClick: true,
+                                delayClose: 200
+                            }).open();
+                        } else {
+                            new jBox('Notice', {
+                                content: '固定成功!',
+                                color: 'blue',
+                                stack: true,
+                                closeOnClick: true,
+                                delayClose: 200
+                            }).open();
+                        }
+
+                    });
                     break;
                 case 'delete':
                     var confirm = new jBox('Confirm', {
@@ -69,6 +94,45 @@ function initContextMenu() {
             }
         },
         callbefore: function () {
+        }
+    });
+
+    //首页常用图标右键菜单
+    var fixedBookmarkContextMenu = util.panel({
+        elem: $('.panel-container'),
+        targets: '.fixed-bookmark',
+        list: {
+            'unfix': {
+                'txt': '取消固定'
+            }
+        },
+        callback: function(name) {
+            let icon = this;
+            let bookmarkId = icon.getAttribute('id');
+            bookmarkId = bookmarkId.substring(bookmarkId.indexOf('-') + 1);
+            switch (name) {
+                case 'unfix':
+                    unfix(bookmarkId,(data)=>{
+                        if (data.code !== 0) {
+                            new jBox('Notice', {
+                                content: '取消固定失败!',
+                                color: 'red',
+                                stack: true,
+                                closeOnClick: true,
+                                delayClose: 200
+                            }).open();
+                        } else {
+                            new jBox('Notice', {
+                                content: '取消固定成功!',
+                                color: 'blue',
+                                stack: true,
+                                closeOnClick: true,
+                                delayClose: 200
+                            }).open();
+                        }
+                    });
+                    break;
+            }
         }
     });
 

@@ -291,3 +291,43 @@ $('#showAllBookmark').click(()=>{
     $('#body').show();    
 });
 
+$('#searchBoxSelector').click((event)=>{
+    let position = $('#searchBoxButton').position();
+    $('#searchEngineList').css('top',position.top + $('#searchBoxButton').height());
+    $('#searchEngineList').css('left',position.left);
+    $('#searchEngineList').toggle();
+    event.stopPropagation();
+    
+});
+
+$('.search-engine-item').click((event)=>{
+    $('#searchEngineList').toggle();
+    let searchEngineName = event.currentTarget.getAttribute('data');
+    
+    let url = "";
+    switch (searchEngineName) {
+        case 'Google' : url = "https://www.google.com/search?q="; setButtonContent('Google');break;
+        case 'Baidu' : url = "https://www.baidu.com/s?wd=";setButtonContent('Baidu');break;
+        case 'Bing' : url = "https://cn.bing.com/search?q=";setButtonContent('Bing');break;
+        case 'Zhihu' : url = "https://www.zhihu.com/search?type=content&q=";setButtonContent('Zhihu');break;
+        default: break;
+    }
+    setButtonUrl(url);
+    event.stopPropagation();
+})
+$('body').click(()=>{
+    $('#searchEngineList').hide();
+});
+
+$('#searchBoxButton').click((event)=>{
+    let keyword = $('#searchContent').val();
+    let url = event.currentTarget.getAttribute('url') + keyword;
+    $('#searchContent').val('');
+    window.open(url);
+});
+function setButtonContent(content) {
+    $('#searchBoxButton').text(content);
+}
+function setButtonUrl(url) {
+    $('#searchBoxButton').attr('url', url);
+}

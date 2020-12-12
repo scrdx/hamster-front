@@ -58,7 +58,39 @@
     </div>
     <!-- head end-->
 
-    <div id="home" class="home"></div>
+    <div id="home" class="home">
+        <div class="fixed-panel">
+            <div class="search-box">
+                <input id="searchContent" class="search-box-input" autocomplete="off" />
+                <div id="searchBoxButton" class="search-box-button" url="https://www.baidu.com/s?wd=">Baidu</div>
+                <div id="searchBoxSelector" class="search-box-select">
+                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                </div>
+                <ul id="searchEngineList" class="search-engine-list">
+                    <li class="search-engine-item" data="Google">Google</li>
+                    <li class="search-engine-item" data="Baidu">百度</li>
+                    <li class="search-engine-item" data="Bing">必应</li>
+                    <li class="search-engine-item" data="Zhihu">知乎</li>
+                </ul>
+            </div>
+            <div class="fixed-bookmark-container">
+                <div class="panel-header"><i class="fa fa-cubes" aria-hidden="true"></i>常用</div>
+                <div id="fixedBookmarkPanel" class="panel-container">
+                </div>
+            </div>
+            <div class="random-bookmark-container">
+                <div class="panel-header">
+                    <i class="fa fa-cube" aria-hidden="true"></i>
+                    随便看看
+                    <div class="refresh-button-group">
+                        <div class="refresh-button"><i class="fa fa-refresh fa-5x" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+                <div id="randomBookmarkPanel" class="panel-container">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- body start -->
     <div id="body" class="body">
@@ -208,6 +240,11 @@
 
             //初始化数据
             initCategoryTree();
+            initOftenBookmarkPanel();
+            initRandomBookmarkPanel();
+            
+            //禁止鼠标右键菜单
+            document.oncontextmenu  = ()=>{return false}
         })();
     </script>
 

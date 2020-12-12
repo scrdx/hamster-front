@@ -13,10 +13,6 @@ html,body {
     padding-top: 15px;
     display:none;
 }
-.home {
-    height: 84%;
-    background-color: gray;
-}
 
 /** 图标主面板 **/
 @media screen and (max-width: 767px){
@@ -84,3 +80,166 @@ html,body {
 .main .tb-btn a:last-child {
     border: 0;
 }
+
+
+/* ---------首页----------- */
+.home {
+    height: 84%;
+    background-image: url('../img/tmp.jpg');
+}
+.fixed-panel {
+    height: 100%;
+    width: 65%;
+
+    display: flex;
+    flex-direction: column;
+}
+.search-box {
+    height: 80px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+}
+.search-box-input {
+    width: 70%;
+    height: 80%;
+    margin-left: 20px;
+    padding-left: 20px;;
+    border: none;
+    background-color: #fafafa8a;
+    
+    color: black;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+.search-box-button {
+    width: 80px;
+    height: 80%;
+    background-color: #333333;
+
+    color: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+
+}
+.search-box-button:hover {
+    background-color: #101010;
+    cursor: pointer;
+}
+.search-box-button:active {
+    background-color: #101010;
+}
+.search-box-select {
+    width: 20px;
+    height: 80%;
+    border-left: 1px solid #ebebeb;
+    background-color: #333333;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+
+    color: #f7f7f7;
+    font-size: 14px;
+}
+.search-box-select:hover {
+    background-color: #101010;
+}
+.search-box-select:active {
+    background-color: #101010;
+}
+
+.search-engine-list {
+    display: none;
+    list-style-type: none;
+    z-index: 999;
+    height: 120px;
+    width: 100px;
+    padding-left: 0;
+    background-color: #333333;
+    box-shadow: 2px 2px 4px 0 #44444481;
+    border-radius: 2px;
+    color: #a3a3a3;
+    position: fixed;
+    margin-top: 1px;
+}
+.search-engine-list li {
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+    border-left: 2px solid #333333;
+    border-bottom: 1px solid #474747;
+    line-height: 30px;
+    -webkit-user-select: none;;
+}
+.search-engine-list li:hover {
+    background-color: #101010;
+    border-left: 2px solid #3287ac;
+}
+
+
+
+
+
+
+.fixed-bookmark-container {
+    height: 70%;
+    box-shadow: 2px 2px 5px 0 #464646b3;
+    background-color: #65646499;
+    border-top-right-radius: 2px;
+    
+}
+.panel-header {
+    height: 40px;
+    background-color: #191d1e;
+    border-top-right-radius: 2px;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 10px;
+    color: #f7f7f7;
+    font-family: sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    user-select:none;
+    text-shadow: 1px 1px 1px #a0a0a0;
+}
+.panel-header i {
+    text-shadow: none;
+    font-size: 14px;
+}
+
+
+.random-bookmark-container {
+    flex-grow: 1;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 5px 0 #464646b3;
+    background-color: #65646499;
+    border-top-right-radius: 2px;
+}
+.refresh-button-group {
+    height: 100%;
+    flex: 1;
+}
+.refresh-button {
+    float: right;
+    height: 100%;
+    width: 80px;
+    font-size: 24px;
+    text-align: center;
+    transition: 200ms;
+}
+.refresh-button:hover {
+    background-color: #3b474a;
+    transition: 200ms;
+}
+.refresh-button:active {
+    background-color: #000;
+    transition: 200ms;
+}
+
