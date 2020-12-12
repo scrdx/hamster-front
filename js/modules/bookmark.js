@@ -96,8 +96,9 @@ function initBookmarkData(categoryId, isRefresh, key) {
 }
 
 /** 书签信息预览 */
+var bookmarkPreviewBox;
 function initBookmarkPreview() {
-    new jBox('Tooltip', {
+    bookmarkPreviewBox = new jBox('Tooltip', {
         attach: '.bookmark',
         trigger: 'mouseenter',
         isolateScroll: false,

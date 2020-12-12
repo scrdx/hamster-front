@@ -229,6 +229,7 @@ function initOftenBookmarkPanel() {
             return;
         }
         for (let bookmark of bookmarkArray) {
+            CACHE.bookmarkMap.set('bookmark-' + bookmark.id, bookmark);
             let bookmarkItem = document.createElement('div');
             if (bookmark.isFixed && bookmark.isFixed === 1) {
                 bookmarkItem.setAttribute('class', 'bookmark fixed-bookmark');
@@ -283,8 +284,9 @@ function initRandomBookmarkPanel(isRefresh) {
             $(fixedBookmarkPanel).empty();
         }
         for (let bookmark of bookmarkArray) {
+            CACHE.bookmarkMap.set('bookmark-' + bookmark.id, bookmark);
             let bookmarkItem = document.createElement('div');
-            bookmarkItem.setAttribute('class', 'bookmark');
+            bookmarkItem.setAttribute('class', 'bookmark random-bookmark');
             bookmarkItem.setAttribute('id', 'bookmark-' + bookmark.id);
 
             let bookmarkHref = document.createElement('a');
@@ -302,6 +304,10 @@ function initRandomBookmarkPanel(isRefresh) {
             bookmarkItem.appendChild(bookmarkHref);
             bookmarkItem.appendChild(bookmarkTitle);
             fixedBookmarkPanel.appendChild(bookmarkItem);
+        }
+        if (isRefresh) {
+            //为新加载的书签添加预览面板
+            bookmarkPreviewBox.attach('.bookmark');
         }
     });
 }
