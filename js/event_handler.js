@@ -323,7 +323,8 @@ $('#searchBoxButton').click((event)=>{
     let keyword = $('#searchContent').val();
     let url = event.currentTarget.getAttribute('url') + keyword;
     $('#searchContent').val('');
-    window.open(url);
+    // window.open(url);
+    window.location.href=url;
 });
 function setButtonContent(content) {
     $('#searchBoxButton').text(content);
