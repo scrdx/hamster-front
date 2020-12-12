@@ -50,8 +50,10 @@ function initBookmarkData(categoryId, isRefresh, key) {
             bookmarkItem.setAttribute('id', 'bookmark-' + bookmark.id);
 
             let bookmarkHref = document.createElement('a');
-            bookmarkHref.href = bookmark.url;
-            bookmarkHref.setAttribute('target', '_blank');
+            // bookmarkHref.href = bookmark.url;
+            bookmarkHref.href = 'javascript:void(0)';
+            // bookmarkHref.setAttribute('target', '_blank');
+            bookmarkHref.setAttribute('onclick',`visitUrl(${bookmark.id},'${bookmark.url}')`);
             let bookmarkIcon = document.createElement('div');
             bookmarkIcon.setAttribute('class', 'bookmark-icon');
             bookmarkIcon.style.backgroundImage = `url(${bookmark.iconUrl})`;
@@ -154,4 +156,10 @@ function setBookmarkPreviewData(bookmarkId) {
         });
         previewTagWrapper.appendChild(tag);
     }
+}
+
+function visitUrl(id, url) {
+    increase(id, (data)=>{
+        window.location.href=url;
+    });
 }

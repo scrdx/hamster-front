@@ -353,7 +353,7 @@ function unfix(id, callback) {
 function increase(id, callback) {
     let url = `http://${host}/hamster/bookmark/increase`;
     $.ajax({
-        type: 'PUT',
+        type: 'POST',
         url: url,
         crossDomain: true,
         xhrFields: {
@@ -363,9 +363,9 @@ function increase(id, callback) {
         data: {
             id: id
         }
-    }).done((data) => {
+    }).always((data) => {
         callback(data);
-    })
+    });
 }
 
 function getInfoByAddress(address, callback) {
