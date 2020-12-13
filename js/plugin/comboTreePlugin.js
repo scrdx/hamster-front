@@ -35,6 +35,7 @@
         this.comboTreeId = 'comboTree' + Math.floor(Math.random() * 999999);
 
         this._elemInput.addClass('comboTreeInputBox');
+        this._elemInput.attr('autocomplete', "off");
 
         if (this._elemInput.attr('id') === undefined)
             this._elemInput.attr('id', this.comboTreeId + 'Input');
