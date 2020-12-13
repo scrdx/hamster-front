@@ -214,7 +214,7 @@ function initKeyEvent() {
 /**
  * 初始化常用书签面板
  */
-function initOftenBookmarkPanel() {
+function initOftenBookmarkPanel(isRefresh) {
     getOftenBookmarks(20, (data)=>{
         if (data.code !== 0) {
             console.log(`获取常用书签数据失败:code:${data.code}:message:${data.message}`);
@@ -232,6 +232,9 @@ function initOftenBookmarkPanel() {
 
         if (!bookmarkArray || bookmarkArray.length === 0) {
             return;
+        }
+        if (isRefresh) {
+            $(fixedBookmarkPanel).empty();
         }
         for (let bookmark of bookmarkArray) {
             CACHE.bookmarkMap.set('bookmark-' + bookmark.id, bookmark);
@@ -259,6 +262,10 @@ function initOftenBookmarkPanel() {
             bookmarkItem.appendChild(bookmarkHref);
             bookmarkItem.appendChild(bookmarkTitle);
             fixedBookmarkPanel.appendChild(bookmarkItem);
+        }
+        if (isRefresh) {
+            //为新加载的书签添加预览面板
+            bookmarkPreviewBox.attach('.bookmark');
         }
     });
 }

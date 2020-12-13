@@ -53,6 +53,7 @@ function initContextMenu() {
                                 closeOnClick: true,
                                 delayClose: 200
                             }).open();
+                            initOftenBookmarkPanel(true);
                         }
 
                     });
@@ -129,6 +130,7 @@ function initContextMenu() {
                                 closeOnClick: true,
                                 delayClose: 200
                             }).open();
+                            initOftenBookmarkPanel(true);
                         }
                     });
                     break;
