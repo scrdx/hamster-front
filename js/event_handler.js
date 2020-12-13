@@ -313,6 +313,7 @@ $('.search-engine-item').click((event)=>{
         default: break;
     }
     setButtonUrl(url);
+    document.getElementById("searchContent").focus();
     event.stopPropagation();
 })
 $('body').click(()=>{

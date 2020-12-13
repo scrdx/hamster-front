@@ -193,6 +193,9 @@ function setUserInfo() {
     });
 }
 
+/**
+ * 键盘监听事件
+ */
 function initKeyEvent() {
     let f = function (event) {
         if (event.keyCode === 37) {
@@ -201,6 +204,8 @@ function initKeyEvent() {
             $('.main').terseBanner('next');
         } else if (event.keyCode === 13 && document.activeElement.id === 'searchText') {
             $('#search').click();
+        } else if (event.keyCode === 13 && document.activeElement.id === 'searchContent') {
+            $('#searchBoxButton').click();
         }
     }
     $(document).on('keydown', f);
