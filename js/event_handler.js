@@ -221,6 +221,8 @@ $('#search').click(() => {
         selectedCategoryId = CACHE.currentCategoryId;
     }
     initBookmarkData(selectedCategoryId, true, key);
+    $('#body').show();
+    $('#home').hide();   
 });
 
 $('#bookmarkFormUrlGet').click(() => {
